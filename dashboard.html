@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>StreamerQnA dashboard</title>
+        <!-- Twitch bot communication and browser/docker source editting scripts -->
+        <script src="scripts/dashboard/addQuestion.js"></script>
+        <script src="scripts/dashboard/createGroups.js"></script>
+        <script src="scripts/dashboard/core.js"></script>
+        <script src="scripts/dashboard/deleteMessage.js"></script>
+        <script src="scripts/dashboard/getTime.js"></script>
+        <script src="scripts/dashboard/handleCommands.js"></script>
+        <script src="scripts/dashboard/hideBubble.js"></script>
+        <script src="scripts/dashboard/readData.js"></script>
+        <script src="scripts/dashboard/queue.js"></script>
+        <script src="scripts/dashboard/showBubble.js"></script>
+        <script src="scripts/dashboard/style.js"></script>
+        <script src="scripts/dashboard/switchGroup.js"></script>
+
+        <!-- config files -->
+        <script src="config/bot.js"></script>
+        <script src="config/bubble.js"></script>
+        <script src="config/commands.js"></script>
+        <script src="config/dashboard.js"></script>
+    </head>
+
+    <body>
+        <div style="overflow-y:scroll; overflow:hidden; text-align:center;">
+            <table style="width:100%; border-collapse:collapse;">
+                <tbody>
+                    <tr id="cathegoryButtons">
+                        <!-- Buttons will be displayed here -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="questionTableBody" style="width:100%; height:100%; overflow-y:scroll; overflow:hidden;">
+            <!-- Data will be displayed here -->
+        </div>
+        <script type="text/javascript">
+            //localStorage.clear()
+            //console.log(localStorage.getItem('bubbleData'));
+            connectWebSocket();
+            createGroups();
+        </script>
+    </body>
+</html>
