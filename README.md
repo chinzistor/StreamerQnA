@@ -3,4 +3,4 @@ Locally hosted alternative to [Featured.chat](https://featured.chat/) to have yo
 
 To install the system read [install.md](/README/install.md).
 
-For configuration read [configDetailed.md](/README/config.md). It explains every option with great detail.
+For configuration read [config.md](/README/config.md). It explains every option with great detail.
