@@ -16,4 +16,4 @@ window.commands = {
             "compliment",
             "comp"
         ]}
-};
+}; 
