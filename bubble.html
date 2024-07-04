@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AskTheStreamer bubble</title>
+        <script src="scripts/bubble/checkData.js"></script>
+
+        <!-- config files -->
+        <script src="config/bubble.js"></script>
+    </head>
+    <body>
+        <div id="questionTableBody" style="width:100%; height:100%; overflow-y:scroll; overflow:hidden;">
+            <!-- Data will be displayed here -->
+        </div>
+        <script type="text/javascript">
+            //localStorage.clear()
+            window.shown = '';
+            setInterval(checkData, 1000);
+            checkData();
+        </script>
+    </body>
+</html>
