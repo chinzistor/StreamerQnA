@@ -5,12 +5,15 @@ function checkData() {
     if (key == '-none-') {
         if (window.shown != '') {
             window.shown = '';
-            const body = document.getElementById('questionTableBody');
-            body.innerHTML = '';
+            document.getElementById("table").hidden = true;
         }
     }
     else {
         if (window.shown != key && window.shown != '-none-') {
+            document.getElementById('nameHeader').innerHTML = '';
+            document.getElementById('timeHeader').innerHTML = '';
+            document.getElementById('questionBody').innerHTML = '';
+            document.getElementById("table").hidden = false;
             window.shown = key;
             let id;
             for (let group in window.commands) {
@@ -25,12 +28,11 @@ function checkData() {
             let questionGroup = key.replace(id, '');
             const data = localStorage.getItem(key);
 
-            const body = document.getElementById('questionTableBody');
-            body.innerHTML = '';
-            const tableDiv = document.createElement('div');
-            const tableBody = document.createElement('table');
-            const row = document.createElement('tr');
-            const nameCell = document.createElement('td');
+            // Name header configuration
+            const nameHeader = document.getElementById('nameHeader');
+            nameHeader.style.width = '100%';
+            nameHeader.style.backgroundColor = window.bubbleStyle.texts.name.background;
+
             const nameParagraph = document.createElement('p');
             nameParagraph.textContent = user;
             nameParagraph.style.fontFamily = window.bubbleStyle.texts.name.font;
@@ -38,44 +40,48 @@ function checkData() {
             nameParagraph.style.fontWeight = window.bubbleStyle.texts.name.bold;
             nameParagraph.style.size = window.bubbleStyle.texts.name.size;
             nameParagraph.style.color = window.bubbleStyle.texts.name.color;
-            nameParagraph.style.paddingLeft = '10px';
+            nameParagraph.style.paddingLeft = `${window.bubbleStyle.tablestyle.rounding + 5}px`;
+            nameParagraph.style.paddingRight = `${window.bubbleStyle.tablestyle.rounding + 5}px`;
             nameParagraph.style.lineHeight = 0;
-            nameCell.appendChild(nameParagraph);
-            nameCell.style.width = '80%';
-            nameCell.style.backgroundColor = window.bubbleStyle.texts.name.background;
-            row.appendChild(nameCell);
+            nameHeader.appendChild(nameParagraph);
 
-            const timeCell = document.createElement('td');
-            const timeParagraph = document.createElement('p');
-            timeParagraph.textContent = time;
-            timeParagraph.style.fontFamily = window.bubbleStyle.texts.time.font;
-            timeParagraph.style.fontStyle = window.bubbleStyle.texts.time.italic;
-            timeParagraph.style.fontWeight = window.bubbleStyle.texts.time.bold;
-            timeParagraph.style.size = window.bubbleStyle.texts.time.size;
-            timeParagraph.style.color = window.bubbleStyle.texts.time.color;
-            timeParagraph.style.paddingRight = '10px';
-            timeParagraph.style.lineHeight = 0;
+            // Time header configuration
+            if (time != '') {
+                console.log(time);
+                const timeHeader = document.getElementById('timeHeader');
+                timeHeader.style.backgroundColor = window.bubbleStyle.texts.time.background;
+                timeHeader.style.textAlign = 'right';
+                timeHeader.style.whiteSpace = 'nowrap';
+                timeHeader.style.overflow = 'hidden';
+                timeHeader.style.width = '100%';
 
-            timeCell.appendChild(timeParagraph);
-            timeCell.style.backgroundColor = window.bubbleStyle.texts.time.background;
-            timeCell.style.width = '20%';
-            timeCell.style.textAlign = 'right';
-            row.appendChild(timeCell);
-            row.style.overflow = 'hidden';
-            row.style.position = 'relative';
-            row.style.verticalAlign = 'center';
-            row.style.height = 'auto';
+                const timeParagraph = document.createElement('p');
+                timeParagraph.textContent = time;
+                timeParagraph.style.fontFamily = window.bubbleStyle.texts.time.font;
+                timeParagraph.style.fontStyle = window.bubbleStyle.texts.time.italic;
+                timeParagraph.style.fontWeight = window.bubbleStyle.texts.time.bold;
+                timeParagraph.style.size = `${window.bubbleStyle.texts.time.size}px`;
+                timeParagraph.style.color = window.bubbleStyle.texts.time.color;
+                timeParagraph.style.paddingLeft = `${window.bubbleStyle.tablestyle.rounding + 5}px`;
+                timeParagraph.style.paddingRight = `${window.bubbleStyle.tablestyle.rounding + 5}px`;
+                timeParagraph.style.lineHeight = 0;
+                timeHeader.appendChild(timeParagraph);
+            }
 
-            tableBody.appendChild(row);
-            tableBody.style.width = '100%';
-            tableBody.style.spacing = '0px';
-            tableBody.style.borderStyle = 'none';
-            tableBody.style.borderCollapse = 'collapse';
-            tableDiv.appendChild(tableBody);
+            // Header configuration
+            const header = document.getElementById('header');
+            header.style.overflow = 'hidden';
+            header.style.position = 'relative';
+            header.style.verticalAlign = 'center';
+            header.style.height = 'auto';
 
-            const tableBody2 = document.createElement('table')
-            const questionRow = document.createElement('tr');
-            const questionCell = document.createElement('td');
+            // Question cell configuration
+            const questionCell = document.getElementById('questionBody');
+            questionCell.style.backgroundColor = window.bubbleStyle.texts.question.background;
+            questionCell.style.whiteSpace = 'normal';
+            questionCell.style.textOverflow = 'ellipsis';
+            questionCell.style.overflow = 'hidden';
+
             const questionParagraph = document.createElement('p');
             questionParagraph.textContent = question;
             questionParagraph.style.fontFamily = window.bubbleStyle.texts.question.font;
@@ -83,23 +89,28 @@ function checkData() {
             questionParagraph.style.fontWeight = window.bubbleStyle.texts.question.bold;
             questionParagraph.style.size = window.bubbleStyle.texts.question.size;
             questionParagraph.style.color = window.bubbleStyle.texts.question.color;
-            questionParagraph.style.paddingLeft = '10px';
-            questionParagraph.style.lineHeight = 0;
+            questionParagraph.style.paddingLeft = `${window.bubbleStyle.tablestyle.rounding + 5}px`;
+            questionParagraph.style.paddingRight = `${window.bubbleStyle.tablestyle.rounding + 5}px`;
+            questionParagraph.style.lineHeight = 1;
+            questionParagraph.style.wordWrap = 'break-word';
             questionCell.appendChild(questionParagraph);
-            questionCell.style.backgroundColor = window.bubbleStyle.texts.question.background;
-            questionRow.appendChild(questionCell);
 
+            // Body configuration
+            const questionRow = document.getElementById('body');
             questionRow.style.overflow = 'hidden';
             questionRow.style.position = 'relative';
             questionRow.style.verticalAlign = 'center';
             questionRow.style.height = 'auto';
-            tableBody2.appendChild(questionRow);
-            tableBody2.style.width = '100%';
-            tableBody2.style.spacing = '0px';
-            tableBody2.style.borderStyle = 'none';
-            tableBody2.style.borderCollapse = 'collapse';
-            tableDiv.appendChild(tableBody2)
-            body.appendChild(tableDiv);
+
+            // Table configuration
+            const mainTable = document.getElementById("table");
+            mainTable.style.width = '100%';
+            mainTable.style.tableLayout = 'fixed';
+            mainTable.style.border = `${window.bubbleStyle.tablestyle.border.thickness}px ${window.bubbleStyle.tablestyle.border.style} ${window.bubbleStyle.tablestyle.border.color}`;
+            mainTable.style.borderSpacing = window.bubbleStyle.tablestyle.border.spacing;
+            mainTable.style.borderRadius = `${window.bubbleStyle.tablestyle.rounding}px`;
+            mainTable.style.borderCollapse = 'separate';
+            mainTable.style.overflow = 'hidden';
         }
     }
 }
