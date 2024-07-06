@@ -1,12 +1,18 @@
 function createGroups() {
     const groups = document.getElementById("questionTableBody");
+    const table = document.getElementById("buttonsTable");
     const buttons = document.getElementById("cathegoryButtons");
+    const groupButtons = document.getElementById("groups");
+    const groupActions = document.getElementById("groupActions");
+
     document.body.style.backgroundColor = window.dashboardStyle.background;
     let index = 0;
     let num = 0;
     for (let group in window.commands) {
         num = num + 1;
     }
+    table.style.borderSpacing = `${window.dashboardStyle.buttons.borderSpacing}px`;
+    table.style.borderCollapse = 'separate';
     for (let group in window.commands) {
         const buttonDiv = document.createElement('td');
         buttonDiv.id = group + 'Button';
@@ -25,19 +31,20 @@ function createGroups() {
         else {
             styleDict = window.dashboardStyle.buttons.unselected;
         }
-        buttonDiv.style.border = `${styleDict.border.thickness} ${styleDict.border.style} ${styleDict.border.color}`;
-        buttonDiv.style.backgroundColor = `${styleDict.background}`;
+        buttonDiv.style.border = `${styleDict.border.thickness}px ${styleDict.border.style} ${styleDict.border.color}`;
+        buttonDiv.style.backgroundColor = styleDict.background;
+        buttonDiv.style.borderRadius = `${styleDict.border.rounding}px`;
         buttonDiv.addEventListener('mouseenter', () => {
             buttonDiv.style.backgroundColor = styleDict.hoverColor;
         });
         buttonDiv.addEventListener('mouseleave', () => {
             buttonDiv.style.backgroundColor = styleDict.background;
         });
-        buttonDiv.style.transition = `background-color ${styleDict.hoverTime}`;
+        buttonDiv.style.transition = `background-color ${styleDict.hoverTime}s`;
         buttonText.style.fontWeight = styleDict.italic;
         buttonText.style.fontStyle = styleDict.bold;
         buttonText.style.fontSize = `${styleDict.size}pt`;
-        buttonText.style.color = styleDict.text;
+        buttonText.style.color = styleDict.color;
         buttonText.style.fontFamily = styleDict.font;
         buttonText.style.lineHeight = 0;
 
@@ -53,7 +60,52 @@ function createGroups() {
             groupDiv.style.display = 'none';
         }
         groups.appendChild(groupDiv);
+
+        if (index === 0) {
+            const clearGroupButton = document.getElementById("groupActionButton");
+            clearGroupButton.onclick = function () {
+                clearGroup(group);
+            };
+            clearGroupButton.style.border = `${window.dashboardStyle.buttons.selected.border.thickness}px ${window.dashboardStyle.buttons.selected.border.style} ${window.dashboardStyle.buttons.selected.border.color}`;
+            clearGroupButton.style.backgroundColor = window.dashboardStyle.buttons.selected.background;
+            clearGroupButton.style.borderRadius = `${window.dashboardStyle.buttons.selected.border.rounding}px`;
+            clearGroupButton.addEventListener('mouseenter', () => {
+                clearGroupButton.style.backgroundColor = window.dashboardStyle.buttons.selected.hoverColor;
+            });
+            clearGroupButton.addEventListener('mouseleave', () => {
+                clearGroupButton.style.backgroundColor = window.dashboardStyle.buttons.selected.background;
+            });
+            clearGroupButton.style.transition = `background-color ${window.dashboardStyle.buttons.selected.hoverTime}s`;
+
+            const clearGroupText = document.getElementById("groupActionText");
+            clearGroupText.style.fontWeight = window.dashboardStyle.buttons.selected.italic;
+            clearGroupText.style.fontStyle = window.dashboardStyle.buttons.selected.bold;
+            clearGroupText.style.fontSize = `${window.dashboardStyle.buttons.selected.size}pt`;
+            clearGroupText.style.color = window.dashboardStyle.buttons.selected.color;
+            clearGroupText.style.fontFamily = window.dashboardStyle.buttons.selected.font;
+            clearGroupText.style.lineHeight = 0;
+
+        }
         index = index + 1;
     }
+    groups.style.maxHeight = `calc(100vh - ${groupButtons.getBoundingClientRect().height * 2}px - ${groupActions.getBoundingClientRect().height }px)`;
+
+    const scrollbar = document.createElement('style');
+    scrollbar.innerHTML = `
+        ::-webkit-scrollbar {
+            width: ${window.dashboardStyle.buttons.unselected.border.rounding + 4}px;
+        }
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 ${window.dashboardStyle.buttons.unselected.border.rounding}px ${window.dashboardStyle.buttons.unselected.border.thickness}px ${window.dashboardStyle.buttons.unselected.background};
+            border-radius: ${window.dashboardStyle.buttons.unselected.border.rounding / 2}px;
+            border: ${window.dashboardStyle.buttons.unselected.border.thickness}px ${window.dashboardStyle.buttons.unselected.border.style};
+            border-color: ${window.dashboardStyle.buttons.unselected.border.color};
+        }
+        ::-webkit-scrollbar-thumb {
+            background: ${window.dashboardStyle.buttons.unselected.border.color};
+            border-radius: ${window.dashboardStyle.buttons.unselected.border.rounding / 2}px;
+        }`
+    document.head.appendChild(scrollbar);
+
     readData();
 }
