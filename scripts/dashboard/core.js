@@ -14,7 +14,7 @@ function connectWebSocket() {
         // Authentication and joining channels
         socket.send(`PASS ${window.oauthToken}`);
         socket.send(`NICK ${window.botUsername}`);
-        socket.send(`JOIN ${window.channel}`);
+        socket.send(`JOIN #${window.channel}`);
     };
 
     socket.onmessage = function(event) {
