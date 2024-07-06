@@ -1,8 +1,8 @@
 function readData() {
     window.id = 0;
     localStorage.setItem('bubbleData', '-none-');
-    for (let a = 0; a < localStorage.length; a++) {
-        const key = localStorage.key(a);
+    for (let a = localStorage.length; a > 0; a--) {
+        const key = localStorage.key(a - 1);
         for (let group in window.commands) {
             if (key.includes(group)) {
                 const id = +key.replace(group, '');
@@ -19,7 +19,7 @@ function readData() {
                 let question = value.slice(index2 + "#".length);
                 let questionGroup = key.replace(id, '');
 
-                addQuestion(user, questionGroup, time, question, false, id)
+                addQuestion(user, questionGroup, time, question, false, id, '')
                 //console.log(`${user} ${time} ${question} ${questionGroup} ${id} ${key}`);
             }
         }
