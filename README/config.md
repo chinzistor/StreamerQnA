@@ -1,13 +1,17 @@
 # Configuration
 > [!IMPORTANT]
-> For the changes to take effect you need to restart OBS.
+> For the changes to take effect you need to reload the dock and the browser source.
+
+> [!TIP]
+> To reload the dock you simply need to right click into the dock then click refresh.
+> To reload the browser source, simply select the source and click the dedicated button for refreshing it.
 ## Important configuration
 ### Bot settings
 Open `/config/bot.js` and edit the settings.
 ```js
 window.botUsername = "chinzisbot";
 window.oauthToken = "oath:some_lengthy_string";
-window.channel = "#chinzistor"
+window.channel = "chinzistor"
 ```
 `window.botUsername` Enter the username of your Twitch account you want to use for handling the chat commands between the quotation marks. It's recommended to either use your own account you stream on or a bot account you own.
 
@@ -20,8 +24,8 @@ window.channel = "#chinzistor"
 
 `window.channel` Enter the name of the channel you want to monitor the set commands at. Supports only one channel at this time.
 
-> [!IMPORTANT]
-> The # character is needed.
+> [!NOTE]
+> The # character is not needed.
 
 ### Setting up groups and commands
 Open `/config/commands.js` and edit the settings.
@@ -91,7 +95,7 @@ For clarification:
 ### Dashboard
 Open `/config/dashboard.js` and edit the settings.
 *For readibility I didn't copy the whole default settings here.*
-You can edit several options on the docker.
+You can edit several options on the dock.
 > [!NOTE]
 > For colors you can use both HEX codes and any colors HTML accepts.
 With `background` you can set what color the background is going to be.
@@ -108,23 +112,25 @@ You can edit both the selected and unselected buttons separately.
             "font": "sans serif",
             "size": 14,
             "border": {
-                "thickness": "2px",
+                "thickness": 2,
                 "style": "solid",
-                "color": "#FFFF00"
+                "color": "#FFFF00",
+                "spacing": 0
             }
 ```
 - `hoverColor` sets the background color of the button when you hover over them with your cursor.
-- `hoverTime` sets how fast the color changing animation is going to last. It's in seconds, the `s` is needed.
+- `hoverTime` sets how fast the color changing animation is going to last in seconds.
 - `border` is for changing the buttons' outline's look:
-  - `thickness` sets how thick this border is going to be. `px` is needed.
+  - `thickness` sets how thick this border is going to be in pixels.
   - `style` sets what style the border is going to have. Accepted values: `dotted` `dqashed` `solid` `double` `groove` `ridge` `inset` `outset` `none`
   - `color` sets the border's color.
 - `background` sets the background color of the button.
-- `text` sets the color of the text.
+- `color` sets the color of the text.
 - `italic` sets if the text should be italic. Accepted values: `true` `false`
 - `bold` sets if the text should be bold. Accepted values: `true` `false`
 - `font` sets the font of the text.
 - `size` sets the font size.
+You've probably noticed that within the `buttons` node you have a `borderspacing` option, this set how big gap in pixels is going to be between the buttons.
 
 Within the `queue` settings you can separately change each section's design.
 `selected` section is what for the selected question that is shown on the stream, the rest are the `unselected`.
@@ -140,9 +146,9 @@ Within the `queue` settings you can separately change each section's design.
 The formatting of the time is done in `/config/bubble.js`.
 
 ### Bubble
-Open `/config/dashboard.js` and edit the settings.
+Open `/config/bubble.js` and edit the settings.
 
-All settings are the same as in the `dashboard` settings within the `queue` section.
+All text settings are the same as in the `dashboard` settings within the `queue` section.
 However there's an extra option for `time` here:
 - `format` sets how the time text is going to look like. The system will replace the following syntaxes:
   - `%h` is hours
@@ -150,6 +156,21 @@ However there's an extra option for `time` here:
   - `%m` is minutes
   - `%s` is seconds
   - `%p` is the perios (AM or PM)
+
+You can also configure the style of the borders separately:
+```js
+    "tablestyle": {
+        "rounding": 20,
+        "transparency": 1,
+        "border": {
+            "thickness": "2px",
+            "style": "solid",
+            "color": "#00FFFF",
+            "spacing": 0
+        }
+    },
+```
+- `rounding` rounds the corner of the whole bubble.
 
 
 ## Any options you find in the configuration files that aren't listed here are not yet available.
