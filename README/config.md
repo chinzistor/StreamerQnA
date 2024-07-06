@@ -124,13 +124,14 @@ You can edit both the selected and unselected buttons separately.
   - `thickness` sets how thick this border is going to be in pixels.
   - `style` sets what style the border is going to have. Accepted values: `dotted` `dqashed` `solid` `double` `groove` `ridge` `inset` `outset` `none`
   - `color` sets the border's color.
+  - `spacing` sets the distance between the individual elements (name, time, question slots).
 - `background` sets the background color of the button.
 - `color` sets the color of the text.
 - `italic` sets if the text should be italic. Accepted values: `true` `false`
 - `bold` sets if the text should be bold. Accepted values: `true` `false`
 - `font` sets the font of the text.
 - `size` sets the font size.
-You've probably noticed that within the `buttons` node you have a `borderspacing` option, this set how big gap in pixels is going to be between the buttons.
+You've probably noticed that within the `buttons` node you have a `borderSpacing` option, this set how big gap in pixels is going to be between the buttons.
 
 Within the `queue` settings you can separately change each section's design.
 `selected` section is what for the selected question that is shown on the stream, the rest are the `unselected`.
@@ -144,6 +145,12 @@ Within the `queue` settings you can separately change each section's design.
   - `font` sets the font of the text.
   - `size` sets the font size.
 The formatting of the time is done in `/config/bubble.js`.
+And you have a separate node, `border`, here you can set the design of the border that surrounds the messages within your queues.
+- `thickness` sets how thick this border is going to be in pixels.
+- `style` sets what style the border is going to have. Accepted values: `dotted` `dqashed` `solid` `double` `groove` `ridge` `inset` `outset` `none`
+- `color` sets the border's color.
+- `spacing` sets the distance between the individual elements (name, time, question slots).
+
 
 ### Bubble
 Open `/config/bubble.js` and edit the settings.
