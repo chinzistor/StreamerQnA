@@ -33,10 +33,11 @@ In the newly opened window:
   - macOS: `file://Users/user/Desktop/bubble.html`
 > [!TIP]
 > Make sure to replace `user` with your username.
-- Recommended width and height are 400 with the default configuration.
+- Recommended width is 600 and recommended height is 400 with the default configuration.
 - Select `Control audio via OBS`.
 - Delete the content of `Custom CSS`.
 ![Screenshot of the browser properties window](/screenshot/bubble.png)
+Position and resize the source on your screen.
 
 ## Configuration
 Read [config.md](/README/config.md) on how to configure StreamerQnA.
