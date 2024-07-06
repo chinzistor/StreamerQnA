@@ -15,10 +15,7 @@ function handleCommands(message) {
                 if (aliases.includes(command)) {
                     let question = chat.replace(/^[^\s]+/, '').trim();
                     //console.log(`${user} ${question} ${group}`);
-                    addQuestion(user, group, -1, question, true, -1);
-                    if (commands[group].response != '') {
-                        sendMessage(`${user}, ${commands[group].response}`)
-                    }
+                    addQuestion(user, group, -1, question, true, -1, commands[group].response);
                 }
             }
         }
