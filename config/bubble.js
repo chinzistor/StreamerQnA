@@ -6,6 +6,8 @@ window.bubbleStyle = {
             "italic": false,
             "bold": true,
             "size": 15,
+            "transparency": 1,
+            "backgroundTransparency": 1,
             "font": "sans serif"
         },
         "time": {
@@ -14,8 +16,10 @@ window.bubbleStyle = {
             "italic": true,
             "bold": false,
             "size": 15,
+            "transparency": 1,
+            "backgroundTransparency": 1,
             "font": "sans serif",
-            "format": "%h:%m:%s %p"
+            "format": "%h:%m:%s"
         },
         "question": {
             "background": "#008888",
@@ -23,18 +27,19 @@ window.bubbleStyle = {
             "italic": false,
             "bold": false,
             "size": 15,
+            "transparency": 1,
+            "backgroundTransparency": 1,
             "font": "sans serif"
         }
     },
-    "style": {
-        "rounding": 20,
-        "body": {
-            "transparency": 1,
-            "color": "#AAFFFF"
-        },
-        "header": {
-            "transparency": 1,
-            "color": "#00FFFF"
+    "tablestyle": {
+        "rounding": 10,
+        "transparency": 1,
+        "border": {
+            "thickness": 2,
+            "style": "solid",
+            "color": "#00FFFF",
+            "spacing": 0
         }
     },
     "profile": {
