@@ -5,6 +5,7 @@
         <title>StreamerQnA dashboard</title>
         <!-- Twitch bot communication and browser/docker source editting scripts -->
         <script src="scripts/dashboard/addQuestion.js"></script>
+        <script src="scripts/dashboard/clearGroup.js"></script>
         <script src="scripts/dashboard/createGroups.js"></script>
         <script src="scripts/dashboard/core.js"></script>
         <script src="scripts/dashboard/deleteMessage.js"></script>
@@ -23,8 +24,8 @@
     </head>
 
     <body>
-        <div style="overflow-y:scroll; overflow:hidden; text-align:center;">
-            <table style="width:100%; border-collapse:collapse;">
+        <div style="overflow:hidden; text-align:center;" id="groups">
+            <table style="width:100%;" id="buttonsTable">
                 <tbody>
                     <tr id="cathegoryButtons">
                         <!-- Buttons will be displayed here -->
@@ -32,7 +33,18 @@
                 </tbody>
             </table>
         </div>
-        <div id="questionTableBody" style="width:100%; height:100%; overflow-y:scroll; overflow:hidden;">
+        <div style="overflow:hidden; text-align:center; display:flex; justify-content:center;" id="groupActions">
+            <table style="width:60%;" id="groupActionsTable">
+                <tbody>
+                    <tr>
+                        <td id="groupActionButton">
+                            <p id="groupActionText">Clear group queue</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="questionTableBody" style="width:100%; height:100%; overflow-y:auto;">
             <!-- Data will be displayed here -->
         </div>
         <script type="text/javascript">
