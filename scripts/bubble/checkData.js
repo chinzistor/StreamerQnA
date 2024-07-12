@@ -1,24 +1,35 @@
+// Checking if there's a question needed to be shown
 function checkData() {
+    // Getting the key of the message that's needed to be shown
     const key = localStorage.getItem('bubbleData');
     //console.log(localStorage.getItem('bubbleData'));
     //console.log(key);
+
+    // If there's no set message, this hides the bubble
     if (key == '-none-') {
         if (window.shown != '') {
             window.shown = '';
             document.getElementById("table").hidden = true;
         }
     }
+
+    // If there's a set message to be shown, this shows that in the bubble
     else {
         if (window.shown != key && window.shown != '-none-') {
+            // Getting and storing HTML elements of the bubble in variables for handling and styling
             document.getElementById('nameHeader').innerHTML = '';
             document.getElementById('timeHeader').innerHTML = '';
             document.getElementById('questionBody').innerHTML = '';
             document.getElementById("table").hidden = false;
+
+            // Getting the numerical id of the message
             window.shown = key;
             let id;
             for (let group in window.commands) {
                 id = +key.replace(group, '');
             }
+
+            // Reading the message from localStorage and handling the data
             const value = localStorage.getItem(key);
             let index1 = value.indexOf('#');
             let user = value.slice(0, index1);
@@ -33,6 +44,7 @@ function checkData() {
             nameHeader.style.width = '100%';
             nameHeader.style.backgroundColor = window.bubbleStyle.texts.name.background;
 
+            // Writing the name and styling the text
             const nameParagraph = document.createElement('p');
             nameParagraph.textContent = user;
             nameParagraph.style.fontFamily = window.bubbleStyle.texts.name.font;
@@ -45,8 +57,9 @@ function checkData() {
             nameParagraph.style.lineHeight = 0;
             nameHeader.appendChild(nameParagraph);
 
-            // Time header configuration
+            // Checking if the of the sent message is needed to be shown
             if (time != '') {
+                // Time header configuration
                 console.log(time);
                 const timeHeader = document.getElementById('timeHeader');
                 timeHeader.style.backgroundColor = window.bubbleStyle.texts.time.background;
@@ -55,6 +68,7 @@ function checkData() {
                 timeHeader.style.overflow = 'hidden';
                 timeHeader.style.width = '100%';
 
+                // Writing the time and styling the text
                 const timeParagraph = document.createElement('p');
                 timeParagraph.textContent = time;
                 timeParagraph.style.fontFamily = window.bubbleStyle.texts.time.font;
@@ -68,7 +82,7 @@ function checkData() {
                 timeHeader.appendChild(timeParagraph);
             }
 
-            // Header configuration
+            // Message header configuration
             const header = document.getElementById('header');
             header.style.overflow = 'hidden';
             header.style.position = 'relative';
@@ -82,6 +96,7 @@ function checkData() {
             questionCell.style.textOverflow = 'ellipsis';
             questionCell.style.overflow = 'hidden';
 
+            // Writing the question and styling the text
             const questionParagraph = document.createElement('p');
             questionParagraph.textContent = question;
             questionParagraph.style.fontFamily = window.bubbleStyle.texts.question.font;
