@@ -1,26 +1,95 @@
+// Adding questions to the dashboard
 function addQuestion(user, group, time, question, store, replaceId, response) {
     let duplicated = false;
 
-    const timeCell = document.createElement('td');
-    const timeParagraph = document.createElement('p');
-    const formattedTime = getTime();
-    if (time === -1) {
-        timeParagraph.textContent = formattedTime;
-    }
-    else {
-        timeParagraph.textContent = time;
-    }
-
-    for (let a = 0; a < localStorage.length; a++) {
-        const key = localStorage.key(a);
-        if (localStorage.getItem(key) == `${user}#${formattedTime}#${question}`) {
-            duplicated = true;
+    // Checking for duplicated (similar) questions if window.allowRQ is true
+    if (response != "" && !window.allowRQ) {
+        for (let a = 0; a < localStorage.length; a++) {
+            const key = localStorage.key(a);
+            // Going through the command groups and check if the ID of the question contains any of the group names
+            for (let keys in window.commands) {
+                if (key.includes(keys)) {
+                    const data = localStorage.getItem(key).split('#')
+                    const storedName = data[0];
+                    const storedQuestion = data[2];
+                    //console.log(`${user} ${group} ${question} - ${storedName} ${keys} ${data[2]}`);
+                    // Allowing similar questions
+                    if (window.allowSQ) {
+                        // Checking if the question is already in a different group
+                        if (window.checkGroup) {
+                            // Checking if the same question was already sent by the same user (if window.allowSQFDU is true)
+                            if (window.allowSQFDU) {
+                                const userName = storedName;
+                                if (storedQuestion == question && userName == user && group == keys) {
+                                    duplicated = true;
+                                }
+                            }
+                            // Checking if the same question was already sent by any users (if window.allowSQFDU is false)
+                            else {
+                                if (storedQuestion == question && group == keys) {
+                                    duplicated = true;
+                                }
+                            }
+                        }
+                        else {
+                            // Checking if the same question was already sent by the same user (if window.allowSQFDU is true)
+                            if (window.allowSQFDU) {
+                                const userName = storedName;
+                                if (storedQuestion == question && userName == user) {
+                                    duplicated = true;
+                                }
+                            }
+                            // Checking if the same question was already sent by any users (if window.allowSQFDU is false)
+                            else {
+                                if (storedQuestion == question) {
+                                    duplicated = true;
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        // Checking if the question is already in a different group
+                        if (window.checkGroup) {
+                            const difference = checkStringSimilarities(storedQuestion, question);
+                            // Checking if the a question was already sent by the same user (if window.allowSQFDU is true)
+                            if (window.allowSQFDU) {
+                                const userName = storedName;
+                                if (difference >= window.similaritySensitivity && userName == user && group == keys) {
+                                    duplicated = true;
+                                }
+                            }
+                            // Checking if the a question was already sent by any users (if window.allowSQFDU is false)
+                            else {
+                                if (difference >= window.similaritySensitivity && group == keys) {
+                                    duplicated = true;
+                                }
+                            }
+                        }
+                        else {
+                            const difference = checkStringSimilarities(storedQuestion, question);
+                            // Checking if the a question was already sent by the same user (if window.allowSQFDU is true)
+                            if (window.allowSQFDU) {
+                                const userName = storedName;
+                                if (difference >= window.similaritySensitivity && userName == user) {
+                                    duplicated = true;
+                                }
+                            }
+                            // Checking if the a question was already sent by any users (if window.allowSQFDU is false)
+                            else {
+                                if (difference >= window.similaritySensitivity) {
+                                    duplicated = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-
     }
 
+    // If the incoming question isn't duplicated
     if (!duplicated) {
-        const body = document.getElementById(group);
+        // Creating the ID for the question
         let localId;
         if (replaceId === -1) {
             localId = window.id;
@@ -28,14 +97,10 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         else {
             localId = replaceId;
         }
+        const formattedId = localId.toString().padStart(4, '0')
         //console.log(`Test: ${localId} ${window.id} ${replaceId}`);
 
-        const tableDiv = document.createElement('div');
-        tableDiv.id = `${group}${localId}`;
-        tableDiv.className = 'table'
-        const tableBody = document.createElement('table');
-        const row = document.createElement('tr');
-        const nameCell = document.createElement('td');
+        // Adding the name of the viewer to the dashboard
         const nameParagraph = document.createElement('p');
         nameParagraph.textContent = user;
         nameParagraph.style.fontFamily = window.dashboardStyle.queue.unselected.name.font;
@@ -45,14 +110,24 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         nameParagraph.style.color = window.dashboardStyle.queue.unselected.name.color;
         nameParagraph.style.paddingLeft = '10px';
         nameParagraph.style.lineHeight = 0;
-        nameParagraph.id = `name${group}${localId}`;
+        nameParagraph.id = `name${group}${formattedId}`;
+        // Creating the box for the name
+        const nameCell = document.createElement('td');
         nameCell.appendChild(nameParagraph);
         nameCell.className = 'name';
         nameCell.style.width = '80%';
         nameCell.style.backgroundColor = window.dashboardStyle.queue.unselected.name.background;
-        nameCell.id = `nameCell${group}${localId}`;
-        row.appendChild(nameCell);
+        nameCell.id = `nameCell${group}${formattedId}`;
 
+        // Adding the time of the question to the dashboard
+        const timeParagraph = document.createElement('p');
+        const formattedTime = getTime();
+        if (time === -1) {
+            timeParagraph.textContent = formattedTime;
+        }
+        else {
+            timeParagraph.textContent = time;
+        }
         timeParagraph.style.fontFamily = window.dashboardStyle.queue.unselected.time.font;
         timeParagraph.style.fontStyle = window.dashboardStyle.queue.unselected.time.italic;
         timeParagraph.style.fontWeight = window.dashboardStyle.queue.unselected.time.bold;
@@ -60,31 +135,36 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         timeParagraph.style.color = window.dashboardStyle.queue.unselected.time.color;
         timeParagraph.style.paddingRight = '10px';
         timeParagraph.style.lineHeight = 0;
-        timeParagraph.id = `time${group}${localId}`;
+        timeParagraph.id = `time${group}${formattedId}`;
 
+        // Creating the box for the time
+        const timeCell = document.createElement('td');
         timeCell.appendChild(timeParagraph);
         timeCell.className = 'time';
         timeCell.style.backgroundColor = window.dashboardStyle.queue.unselected.time.background;
-        timeCell.id = `timeCell${group}${localId}`;
+        timeCell.id = `timeCell${group}${formattedId}`;
         timeCell.style.width = '20%';
         timeCell.style.textAlign = 'right';
+
+        // Creating the row for the name and time
+        const row = document.createElement('tr');
+        row.appendChild(nameCell);
         row.appendChild(timeCell);
         row.style.overflow = 'hidden';
         row.style.position = 'relative';
         row.style.verticalAlign = 'center';
         row.style.height = 'auto';
 
-
+        // Creating the body for name and time
+        const tableBody = document.createElement('table');
         tableBody.appendChild(row);
         tableBody.style.width = '100%';
         tableBody.style.spacing = `${window.dashboardStyle.queue.unselected.border.spacing}px`;
         tableBody.style.border = `${window.dashboardStyle.queue.unselected.border.thickness}px ${window.dashboardStyle.queue.unselected.border.style} ${window.dashboardStyle.queue.unselected.border.color}`;
         tableBody.style.tableLayout = 'fixed';
-        tableDiv.appendChild(tableBody);
 
-        const tableBody2 = document.createElement('table')
-        const questionRow = document.createElement('tr');
-        const questionCell = document.createElement('td');
+
+        // Adding the question to the dashboard
         const questionParagraph = document.createElement('p');
         questionParagraph.textContent = question;
         questionParagraph.style.fontFamily = window.dashboardStyle.queue.unselected.question.font;
@@ -95,69 +175,101 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         questionParagraph.style.paddingLeft = '10px';
         questionParagraph.style.lineHeight = 1;
         questionParagraph.style.wordWrap = 'break-word';
-        questionParagraph.id = `question${group}${localId}`;
+        questionParagraph.id = `question${group}${formattedId}`;
+        // Creating the box for the question
+        const questionCell = document.createElement('td');
         questionCell.appendChild(questionParagraph);
         questionCell.className = 'question';
         questionCell.style.width = '100%';
         questionCell.style.backgroundColor = window.dashboardStyle.queue.unselected.question.background;
-        questionCell.id = `questionCell${group}${localId}`;
-        questionRow.appendChild(questionCell);
+        questionCell.id = `questionCell${group}${formattedId}`;
 
-        const showCell = document.createElement('td');
+        // Adding show/hide button to the dashboard
         const questionShow = document.createElement('img');
         questionShow.src = 'assets/show.png';
         questionShow.alt = 'Show this message on stream.';
-        questionShow.id = `show${group}${localId}`;
+        questionShow.id = `show${group}${formattedId}`;
         questionShow.onclick = function () {
-            showBubble(localId, group);
+            showBubble(formattedId, group);
         };
         questionShow.width = window.dashboardStyle.queue.unselected.question.size * 2;
         questionShow.height = window.dashboardStyle.queue.unselected.question.size * 2;
         questionShow.style.whiteSpace = 'nowrap';
+        // Creating the box for the show/hide button
+        const showCell = document.createElement('td');
         showCell.appendChild(questionShow);
         showCell.justifyContent = 'center';
         showCell.alignItems = 'center';
         showCell.style.width = `${window.dashboardStyle.queue.unselected.question.size * 2}px`;
-        questionRow.appendChild(showCell);
 
-        const deleteCell = document.createElement('td');
+        // Adding delete button to the dashboard
         const questionDelete = document.createElement('img');
         questionDelete.src = 'assets/delete.png';
         questionDelete.alt = 'Remove this message from queue.';
-        questionDelete.id = `del${localId}`;
+        questionDelete.id = `del${formattedId}`;
         questionDelete.onclick = function () {
-            deleteMessage(localId, group);
+            deleteMessage(formattedId, group);
         };
         questionDelete.width = window.dashboardStyle.queue.unselected.question.size * 2;
         questionDelete.height = window.dashboardStyle.queue.unselected.question.size * 2;
         questionDelete.style.whiteSpace = 'nowrap';
+        // Creating the box for the delete button
+        const deleteCell = document.createElement('td');
         deleteCell.appendChild(questionDelete);
         deleteCell.justifyContent = 'center';
         deleteCell.alignItems = 'center';
         deleteCell.style.width = `${window.dashboardStyle.queue.unselected.question.size * 2}px`;
-        questionRow.appendChild(deleteCell);
 
+        // Creating the row for the question and the buttons
+        const questionRow = document.createElement('tr');
+        questionRow.appendChild(questionCell);
+        questionRow.appendChild(showCell);
+        questionRow.appendChild(deleteCell);
         questionRow.style.overflow = 'hidden';
         questionRow.style.position = 'relative';
         questionRow.style.verticalAlign = 'center';
         questionRow.style.height = 'auto';
+
+        // Creating the body for name and time
+        const tableBody2 = document.createElement('table')
         tableBody2.appendChild(questionRow);
         tableBody2.style.width = '100%';
         tableBody2.style.spacing = `${window.dashboardStyle.queue.unselected.border.spacing}px`;
         tableBody2.style.border = `${window.dashboardStyle.queue.unselected.border.thickness}px ${window.dashboardStyle.queue.unselected.border.style} ${window.dashboardStyle.queue.unselected.border.color}`;
         tableBody2.style.tableLayout = 'fixed';
+
+        // Creating the table for the question
+        const tableDiv = document.createElement('div');
+        tableDiv.id = `${group}${formattedId}`;
+        tableDiv.className = 'table'
+        tableDiv.appendChild(tableBody);
         tableDiv.appendChild(tableBody2);
         tableDiv.style.border = `${window.dashboardStyle.queue.unselected.border.thickness}px ${window.dashboardStyle.queue.unselected.border.style} ${window.dashboardStyle.queue.unselected.border.color}`;
         tableDiv.style.borderSpacing = `${window.dashboardStyle.queue.unselected.border.spacing}px`;
+
+        // Getting the HTML element to edit based on which command group the command belongs
+        const body = document.getElementById(group);
         body.appendChild(tableDiv);
 
         if (store) {
-            localStorage.setItem(`${group}${localId}`, `${user}#${formattedTime}#${question}`);
-        }
-        if (response != '') {
-            sendMessage(`${user}, ${response}`)
+            console.log(formattedId);
+            localStorage.setItem(`${group}${formattedId}`, `${user}#${formattedTime}#${question}`);
         }
 
         window.id++;
+    }
+
+    // If duplicated question was already sent
+    else {
+        // If a response is set in bot.js
+        if (window.duplicationResponse != "") {
+            // Send the duplication response
+            sendMessage(`${user}, ${window.duplicationResponse}`)
+        }
+    }
+
+    // Responding to the command
+    if (response != "" && !duplicated) {
+        sendMessage(`${user}, ${commands[group].response}`)
     }
 }
