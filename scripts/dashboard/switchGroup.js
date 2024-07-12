@@ -1,6 +1,9 @@
+// Switching groups in the dashboard
 function switchGroup(name) {
     for (let group in window.commands) {
+        // Hiding all groups
         document.getElementById(group).style.display = "none";
+        // Setting all buttons to the unselected state
         document.getElementById(group + 'Div').style.border = `${window.dashboardStyle.buttons.unselected.border.thickness}px ${window.dashboardStyle.buttons.unselected.border.style} ${window.dashboardStyle.buttons.unselected.border.color}`;
         document.getElementById(group + 'Div').style.borderSpacing = `${window.dashboardStyle.buttons.unselected.border.spacing}px`;
         document.getElementById(group + 'Div').style.backgroundColor = window.dashboardStyle.buttons.unselected.background;
@@ -17,7 +20,9 @@ function switchGroup(name) {
         });
         document.getElementById(group + 'Div').style.transition = `background-color ${window.dashboardStyle.buttons.unselected.hoverTime}`;
     }
+    // Showing the specific group
     document.getElementById(name).style.display = "";
+    // Setting the specific button to the selected state
     document.getElementById(name + 'Div').style.border = `${window.dashboardStyle.buttons.selected.border.thickness}px ${window.dashboardStyle.buttons.selected.border.style} ${window.dashboardStyle.buttons.selected.border.color}`
     document.getElementById(name + 'Div').style.borderSpacing = `${window.dashboardStyle.buttons.selected.border.spacing}px`;
     document.getElementById(name + 'Div').style.backgroundColor = window.dashboardStyle.buttons.selected.background;
@@ -34,6 +39,7 @@ function switchGroup(name) {
     });
     document.getElementById(name + 'Div').style.transition = `background-color ${window.dashboardStyle.buttons.selected.hoverTime}`;
 
+    // Setting the clear group queue button's onclick function
     document.getElementById('groupActionButton').onclick = function () {
         clearGroup(name);
     };
