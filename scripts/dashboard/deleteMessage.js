@@ -1,3 +1,4 @@
+// Removing a question from the queue
 function deleteMessage(id, group) {
     hideBubble(id, group);
     localStorage.removeItem(`${group}${id}`);
