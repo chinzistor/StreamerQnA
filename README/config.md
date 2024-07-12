@@ -9,9 +9,18 @@
 ### Bot settings
 Open `/config/bot.js` and edit the settings.
 ```js
+// Twitch connection config
 window.botUsername = "chinzisbot";
 window.oauthToken = "oath:some_lengthy_string";
 window.channel = "chinzistor"
+
+// Duplicated message detection config
+window.allowRQ = false; // repeated question
+window.allowSQFDU = false; // same question from different users
+window.allowSQ = false; // similar questions
+window.checkGroup = true;
+window.duplicationResponse = "this question was already submitted.";
+window.similaritySensitivity = 0.5;
 ```
 `window.botUsername` Enter the username of your Twitch account you want to use for handling the chat commands between the quotation marks. It's recommended to either use your own account you stream on or a bot account you own.
 
@@ -26,6 +35,16 @@ window.channel = "chinzistor"
 
 > [!NOTE]
 > The # character is not needed.
+
+The rest of the settings are for setting up filters. These filters will make sure to avoid questions being submitted multiple times.
+- `window.allowRQ` if set to true, will disable checking if a question was already submitted (disables filtering).
+- `window.allowSQFDU` if set to true, will allow the same question being submitted by multiple viewers; if set to false, a specific question will be allowed to be submitted by only one user.
+- `window.allowSQ` if set to true, will allow similar question to be submitted; if set to false, filtering will be applied to similar questions (if there's already a question that is similar to the submitted one, it won't be registered).
+- `window.checkGroup` if set to true, will deny questions that are already registered in a different group.
+- `window.duplicationResponse` is to set what should the bot respond with to the viewer if their question is already registered. Make the quotation marks empty `""` to disable the response.
+- `window.similaritySensitivity` determines how sensitive the similarity filtering is. Higher value means smaller differences are enough to pass the filtering. Accepts value between 0 and 1.
+  - Setting this value to exactly 1 will also disable checking for similarities.
+  - Setting this value to exactly 0 will filter out all questions if there's already one registered.
 
 ### Setting up groups and commands
 Open `/config/commands.js` and edit the settings.
