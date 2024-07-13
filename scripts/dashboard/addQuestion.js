@@ -2,6 +2,8 @@
 function addQuestion(user, group, time, question, store, replaceId, response) {
     let duplicated = false;
 
+// Filtering
+
     // Checking for duplicated (similar) questions if window.allowRQ is true
     if (response != "" && !window.allowRQ) {
         for (let a = 0; a < localStorage.length; a++) {
@@ -87,6 +89,8 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         }
     }
 
+// Data handling
+
     // If the incoming question isn't duplicated
     if (!duplicated) {
         // Creating the ID for the question
@@ -107,17 +111,23 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         nameParagraph.style.fontStyle = window.dashboardStyle.queue.unselected.name.italic;
         nameParagraph.style.fontWeight = window.dashboardStyle.queue.unselected.name.bold;
         nameParagraph.style.size = window.dashboardStyle.queue.unselected.name.size;
-        nameParagraph.style.color = window.dashboardStyle.queue.unselected.name.color;
-        nameParagraph.style.paddingLeft = '10px';
+        nameParagraph.style.color = window.dashboardStyle.queue.unselected.name.color
+        nameParagraph.style.paddingLeft = `${Math.max(window.dashboardStyle.queue.unselected.name.border.rounding.topLeft + 5, window.dashboardStyle.queue.unselected.border.rounding.topLeft / 2)}px`;
+        nameParagraph.style.paddingRight = `${window.dashboardStyle.queue.unselected.name.border.rounding.topRight + 5}px`;
         nameParagraph.style.lineHeight = 0;
         nameParagraph.id = `name${group}${formattedId}`;
         // Creating the box for the name
         const nameCell = document.createElement('td');
         nameCell.appendChild(nameParagraph);
-        nameCell.className = 'name';
-        nameCell.style.width = '80%';
+        nameCell.style.width = '100%';
         nameCell.style.backgroundColor = window.dashboardStyle.queue.unselected.name.background;
+        nameCell.style.border = `${window.dashboardStyle.queue.unselected.name.border.thickness}px ${window.dashboardStyle.queue.unselected.name.border.style} ${window.dashboardStyle.queue.unselected.name.border.color}`;
+        nameCell.style.borderTopLeftRadius = `${Math.max(window.dashboardStyle.queue.unselected.name.border.rounding.topLeft, window.dashboardStyle.queue.unselected.border.rounding.topLeft)}px`
+        nameCell.style.borderTopRightRadius = `${window.dashboardStyle.queue.unselected.name.border.rounding.topRight}px`;
+        nameCell.style.borderBottomLeftRadius = `${window.dashboardStyle.queue.unselected.name.border.rounding.bottomLeft}px`;
+        nameCell.style.borderBottomRightRadius = `${window.dashboardStyle.queue.unselected.name.border.rounding.bottomRight}px`;
         nameCell.id = `nameCell${group}${formattedId}`;
+
 
         // Adding the time of the question to the dashboard
         const timeParagraph = document.createElement('p');
@@ -132,19 +142,26 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         timeParagraph.style.fontStyle = window.dashboardStyle.queue.unselected.time.italic;
         timeParagraph.style.fontWeight = window.dashboardStyle.queue.unselected.time.bold;
         timeParagraph.style.size = window.dashboardStyle.queue.unselected.time.size;
-        timeParagraph.style.color = window.dashboardStyle.queue.unselected.time.color;
-        timeParagraph.style.paddingRight = '10px';
+        timeParagraph.style.color = window.dashboardStyle.queue.unselected.time.color
+        timeParagraph.style.paddingLeft = `${window.dashboardStyle.queue.unselected.time.border.rounding.topLeft + 5}px`;
+        timeParagraph.style.paddingRight = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.topRight / 2, window.dashboardStyle.queue.unselected.time.border.rounding.topRight + 5)}px`;
         timeParagraph.style.lineHeight = 0;
         timeParagraph.id = `time${group}${formattedId}`;
 
         // Creating the box for the time
         const timeCell = document.createElement('td');
         timeCell.appendChild(timeParagraph);
-        timeCell.className = 'time';
         timeCell.style.backgroundColor = window.dashboardStyle.queue.unselected.time.background;
+        timeCell.style.border = `${window.dashboardStyle.queue.unselected.time.border.thickness}px ${window.dashboardStyle.queue.unselected.time.border.style} ${window.dashboardStyle.queue.unselected.time.border.color}`;
+        timeCell.style.borderTopLeftRadius = `${window.dashboardStyle.queue.unselected.time.border.rounding.topLeft}px`;
+        timeCell.style.borderBottomLeftRadius = `${window.dashboardStyle.queue.unselected.time.border.rounding.bottomLeft}px`;
+        timeCell.style.borderBottomRightRadius = `${window.dashboardStyle.queue.unselected.time.border.rounding.bottomRight}px`;
+        timeCell.style.borderTopRightRadius = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.topRight, window.dashboardStyle.queue.unselected.time.border.rounding.topRight)}px`;
         timeCell.id = `timeCell${group}${formattedId}`;
-        timeCell.style.width = '20%';
         timeCell.style.textAlign = 'right';
+        timeCell.style.whiteSpace = 'nowrap';
+        timeCell.style.overflow = 'hidden';
+        timeCell.style.width = '100%';
 
         // Creating the row for the name and time
         const row = document.createElement('tr');
@@ -159,8 +176,6 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         const tableBody = document.createElement('table');
         tableBody.appendChild(row);
         tableBody.style.width = '100%';
-        tableBody.style.spacing = `${window.dashboardStyle.queue.unselected.border.spacing}px`;
-        tableBody.style.border = `${window.dashboardStyle.queue.unselected.border.thickness}px ${window.dashboardStyle.queue.unselected.border.style} ${window.dashboardStyle.queue.unselected.border.color}`;
         tableBody.style.tableLayout = 'fixed';
 
 
@@ -172,7 +187,7 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         questionParagraph.style.fontWeight = window.dashboardStyle.queue.unselected.question.bold;
         questionParagraph.style.size = window.dashboardStyle.queue.unselected.question.size;
         questionParagraph.style.color = window.dashboardStyle.queue.unselected.question.color;
-        questionParagraph.style.paddingLeft = '10px';
+        questionParagraph.style.paddingLeft = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.bottomLeft / 2, window.dashboardStyle.queue.unselected.question.border.rounding.bottomLeft + 5)}px`;
         questionParagraph.style.lineHeight = 1;
         questionParagraph.style.wordWrap = 'break-word';
         questionParagraph.id = `question${group}${formattedId}`;
@@ -182,6 +197,10 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         questionCell.className = 'question';
         questionCell.style.width = '100%';
         questionCell.style.backgroundColor = window.dashboardStyle.queue.unselected.question.background;
+        questionCell.style.borderTopLeftRadius = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.topLeft, window.dashboardStyle.queue.unselected.question.border.rounding.topLeft)}px`;
+        questionCell.style.borderTopRightRadius = `${window.dashboardStyle.queue.unselected.question.border.rounding.topRight}px`;
+        questionCell.style.borderBottomLeftRadius = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.bottomLeft, window.dashboardStyle.queue.unselected.question.border.rounding.bottomLeft)}px`;
+        questionCell.style.borderBottomRightRadius = `${window.dashboardStyle.queue.unselected.question.border.rounding.bottomRight}px`;
         questionCell.id = `questionCell${group}${formattedId}`;
 
         // Adding show/hide button to the dashboard
@@ -195,6 +214,7 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         questionShow.width = window.dashboardStyle.queue.unselected.question.size * 2;
         questionShow.height = window.dashboardStyle.queue.unselected.question.size * 2;
         questionShow.style.whiteSpace = 'nowrap';
+        questionShow.style.cursor = 'pointer';
         // Creating the box for the show/hide button
         const showCell = document.createElement('td');
         showCell.appendChild(questionShow);
@@ -213,6 +233,7 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         questionDelete.width = window.dashboardStyle.queue.unselected.question.size * 2;
         questionDelete.height = window.dashboardStyle.queue.unselected.question.size * 2;
         questionDelete.style.whiteSpace = 'nowrap';
+        questionDelete.style.cursor = 'pointer';
         // Creating the box for the delete button
         const deleteCell = document.createElement('td');
         deleteCell.appendChild(questionDelete);
@@ -235,8 +256,12 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         tableBody2.appendChild(questionRow);
         tableBody2.style.width = '100%';
         tableBody2.style.spacing = `${window.dashboardStyle.queue.unselected.border.spacing}px`;
-        tableBody2.style.border = `${window.dashboardStyle.queue.unselected.border.thickness}px ${window.dashboardStyle.queue.unselected.border.style} ${window.dashboardStyle.queue.unselected.border.color}`;
         tableBody2.style.tableLayout = 'fixed';
+        tableBody2.style.border = `${window.dashboardStyle.queue.unselected.question.border.thickness}px ${window.dashboardStyle.queue.unselected.question.border.style} ${window.dashboardStyle.queue.unselected.question.border.color}`;
+        tableBody2.style.borderTopLeftRadius = `${window.dashboardStyle.queue.unselected.question.border.rounding.topLeft}px`;
+        tableBody2.style.borderTopRightRadius = `${window.dashboardStyle.queue.unselected.question.border.rounding.topRight}px`;
+        tableBody2.style.borderBottomLeftRadius = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.bottomLeft, window.dashboardStyle.queue.unselected.question.border.rounding.bottomLeft)}px`;
+        tableBody2.style.borderBottomRightRadius = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.bottomRight, window.dashboardStyle.queue.unselected.question.border.rounding.bottomRight)}px`;
 
         // Creating the table for the question
         const tableDiv = document.createElement('div');
@@ -245,6 +270,10 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         tableDiv.appendChild(tableBody);
         tableDiv.appendChild(tableBody2);
         tableDiv.style.border = `${window.dashboardStyle.queue.unselected.border.thickness}px ${window.dashboardStyle.queue.unselected.border.style} ${window.dashboardStyle.queue.unselected.border.color}`;
+        tableDiv.style.borderTopLeftRadius = `${window.dashboardStyle.queue.unselected.border.rounding.topLeft}px`;
+        tableDiv.style.borderTopRightRadius = `${window.dashboardStyle.queue.unselected.border.rounding.topRight}px`;
+        tableDiv.style.borderBottomLeftRadius = `${window.dashboardStyle.queue.unselected.border.rounding.bottomLeft}px`
+        tableDiv.style.borderBottomRightRadius = `${window.dashboardStyle.queue.unselected.border.rounding.bottomRight}px`
         tableDiv.style.borderSpacing = `${window.dashboardStyle.queue.unselected.border.spacing}px`;
 
         // Getting the HTML element to edit based on which command group the command belongs
@@ -252,7 +281,7 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         body.appendChild(tableDiv);
 
         if (store) {
-            console.log(formattedId);
+            //console.log(formattedId);
             localStorage.setItem(`${group}${formattedId}`, `${user}#${formattedTime}#${question}`);
         }
 
@@ -262,14 +291,16 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
     // If duplicated question was already sent
     else {
         // If a response is set in bot.js
-        if (window.duplicationResponse != "") {
+        if (window.commands[group].duplicationResponse != "") {
             // Send the duplication response
-            sendMessage(`${user}, ${window.duplicationResponse}`)
+            sendMessage(`${user}, ${window.commands[group].duplicationResponse}`);
         }
     }
 
+    //console.log(window.commands[group].duplicationResponse + ' ' + window.commands[group].response + ' ' + duplicated);
+
     // Responding to the command
     if (response != "" && !duplicated) {
-        sendMessage(`${user}, ${commands[group].response}`)
+        sendMessage(`${user}, ${window.commands[group].response}`);
     }
 }
