@@ -24,7 +24,9 @@ Position and resize the docker to your liking.
 
 ### Source
 Go to your `Sources`, click the `+` icon, select `Browser`, give a name to your source (recommendation: `StreamerQnA bubble`), make sure the `Make source visible` is selected and click `Ok`.
+
 ![Screenshot of the add new browser source window](/screenshot/newBrowser.png)
+
 In the newly opened window:
 - Make sure the `Local file` is **not** selected.
 - Set the `URL` to the address of the `bubble.html` file with `file://` in front. See examples:
@@ -36,7 +38,9 @@ In the newly opened window:
 - Recommended width is 600 and recommended height is 400 with the default configuration.
 - Select `Control audio via OBS`.
 - Delete the content of `Custom CSS`.
+
 ![Screenshot of the browser properties window](/screenshot/bubble.png)
+
 Position and resize the source on your screen.
 
 ## Configuration
