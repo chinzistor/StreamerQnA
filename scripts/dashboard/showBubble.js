@@ -1,5 +1,6 @@
 // Showing question in bubble
 function showBubble(id, groupOriginal) {
+    console.log(id + ' ' + groupOriginal);
     // Resetting all queues' items to the hidden state
     const textIds = ['name', 'time', 'question'];
     const tableIds = ['nameCell', 'timeCell', 'questionCell'];
@@ -25,6 +26,8 @@ function showBubble(id, groupOriginal) {
                         textElement.style.fontWeight = window.dashboardStyle.queue.unselected[textIds[a]].bold;
                         textElement.style.size = window.dashboardStyle.queue.unselected[textIds[a]].size;
                         textElement.style.color = window.dashboardStyle.queue.unselected[textIds[a]].color;
+                        textElement.style.paddingLeft = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.bottomLeft / 2, window.dashboardStyle.queue.unselected[textIds[a]].border.rounding.bottomLeft + 5)}px`;
+                        textElement.style.paddingRight = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.bottomRight / 2, window.dashboardStyle.queue.unselected[textIds[a]].border.rounding.bottomRight + 5)}px`;
                     }
             }
             for (let a = 0; a < tableIds.length; a++) {
@@ -32,6 +35,10 @@ function showBubble(id, groupOriginal) {
                 let tableElement = document.getElementById(`${tableIds[a]}${group}${index}`)
                 if (tableElement) {
                     tableElement.style.backgroundColor = window.dashboardStyle.queue.unselected[textIds[a]].background;
+                    tableElement.style.borderTopLeftRadius = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.topLeft, window.dashboardStyle.queue.unselected[textIds[a]].border.rounding.topLeft)}px`;
+                    tableElement.style.borderTopRightRadius = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.topRight, window.dashboardStyle.queue.unselected[textIds[a]].border.rounding.topRight)}px`;
+                    tableElement.style.borderBottomLeftRadius = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.bottomLeft, window.dashboardStyle.queue.unselected[textIds[a]].border.rounding.bottomLeft)}px`;
+                    tableElement.style.borderBottomRightRadius = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.bottomRight, window.dashboardStyle.queue.unselected[textIds[a]].border.rounding.bottomRight)}px`;
                 }
             }
         }
@@ -46,6 +53,8 @@ function showBubble(id, groupOriginal) {
             textElement.style.fontWeight = window.dashboardStyle.queue.selected[textIds[a]].bold;
             textElement.style.size = window.dashboardStyle.queue.selected[textIds[a]].size;
             textElement.style.color = window.dashboardStyle.queue.selected[textIds[a]].color;
+            textElement.style.paddingLeft = `${Math.max(window.dashboardStyle.queue.selected.border.rounding.bottomLeft / 2, window.dashboardStyle.queue.selected[textIds[a]].border.rounding.bottomLeft + 5)}px`;
+            textElement.style.paddingRight = `${Math.max(window.dashboardStyle.queue.selected.border.rounding.bottomRight / 2, window.dashboardStyle.queue.selected[textIds[a]].border.rounding.bottomRight + 5)}px`;
         }
     }
     for (let a = 0; a < tableIds.length; a++) {
@@ -53,6 +62,10 @@ function showBubble(id, groupOriginal) {
         let tableElement = document.getElementById(`${tableIds[a]}${groupOriginal}${id}`);
         if (tableElement) {
             tableElement.style.backgroundColor = window.dashboardStyle.queue.selected[textIds[a]].background;
+            tableElement.style.borderTopLeftRadius = `${Math.max(window.dashboardStyle.queue.selected.border.rounding.topLeft, window.dashboardStyle.queue.selected[textIds[a]].border.rounding.topLeft)}px`;
+            tableElement.style.borderTopRightRadius = `${Math.max(window.dashboardStyle.queue.selected.border.rounding.topRight, window.dashboardStyle.queue.selected[textIds[a]].border.rounding.topRight)}px`;
+            tableElement.style.borderBottomLeftRadius = `${Math.max(window.dashboardStyle.queue.selected.border.rounding.bottomLeft, window.dashboardStyle.queue.selected[textIds[a]].border.rounding.bottomLeft)}px`;
+            tableElement.style.borderBottomRightRadius = `${Math.max(window.dashboardStyle.queue.selected.border.rounding.bottomRight, window.dashboardStyle.queue.selected[textIds[a]].border.rounding.bottomRight)}px`;
         }
     }
     // Setting show/hide image to hide
