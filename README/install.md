@@ -18,14 +18,14 @@ Example URLs
 
 Click `Apply`.
 
-![Screenshot of the custom dockers window](/screenshot/docker.png)
+![Screenshot of the custom dockers window](/screenshots/docker.png)
 
 Position and resize the docker to your liking.
 
 ### Source
 Go to your `Sources`, click the `+` icon, select `Browser`, give a name to your source (recommendation: `StreamerQnA bubble`), make sure the `Make source visible` is selected and click `Ok`.
 
-![Screenshot of the add new browser source window](/screenshot/newBrowser.png)
+![Screenshot of the add new browser source window](/screenshots/newBrowser.png)
 
 In the newly opened window:
 - Make sure the `Local file` is **not** selected.
@@ -39,7 +39,7 @@ In the newly opened window:
 - Select `Control audio via OBS`.
 - Delete the content of `Custom CSS`.
 
-![Screenshot of the browser properties window](/screenshot/bubble.png)
+![Screenshot of the browser properties window](/screenshots/bubble.png)
 
 Position and resize the source on your screen.
 
