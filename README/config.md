@@ -10,9 +10,8 @@
 Open `/config/bot.js` and edit the settings.
 ```js
 // Twitch connection config
-window.botUsername = "chinzisbot";
+window.username = "chinzistor";
 window.oauthToken = "oath:some_lengthy_string";
-window.channel = "chinzistor"
 
 // Duplicated message detection config
 window.allowRQ = false; // repeated question
@@ -22,7 +21,7 @@ window.checkGroup = true;
 window.duplicationResponse = "this question was already submitted.";
 window.similaritySensitivity = 0.5;
 ```
-`window.botUsername` Enter the username of your Twitch account you want to use for handling the chat commands between the quotation marks. It's recommended to either use your own account you stream on or a bot account you own.
+`window.botUsername` Enter the username of your account you use for streaming.
 
 `window.oauthToken` Enter your oAuth token you can generate at [Twitch Chat OAuth Password Generator](https://twitchapps.com/tmi/).
 > [!IMPORTANT]
@@ -31,10 +30,6 @@ window.similaritySensitivity = 0.5;
 > [!WARNING]
 > Do not share your oAuth token!
 
-`window.channel` Enter the name of the channel you want to monitor the set commands at. Supports only one channel at this time.
-
-> [!NOTE]
-> The # character is not needed.
 
 The rest of the settings are for setting up filters. These filters will make sure to avoid questions being submitted multiple times.
 - `window.allowRQ` if set to true, will disable checking if a question was already submitted (disables filtering).
@@ -124,7 +119,7 @@ You can edit both the selected and unselected buttons separately.
 ```js
             "background": "#00AAAA",
             "hoverColor": "#006666",
-            "hoverTime": "1.0s",
+            "hoverTime": 1.0,
             "text": "#FFFF00",
             "italic": false,
             "bold": true,
@@ -158,7 +153,7 @@ Within the `queue` settings you can separately change each section's design.
 - `time` node is for the design of box that contains the time.
 - `question` node is for the design of box that contains the question.
   - `background` sets the background color of the button.
-  - `color` sets the color of the text.
+  - `color` sets the color of the text. Accepts any HTML colortags and HEX codes.
   - `italic` sets if the text should be italic. Accepted values: `true` `false`
   - `bold` sets if the text should be bold. Accepted values: `true` `false`
   - `font` sets the font of the text.
@@ -182,21 +177,50 @@ However there's an extra option for `time` here:
   - `%m` is minutes
   - `%s` is seconds
   - `%p` is the perios (AM or PM)
+Also you can individually edit each cell's border, just like the whole bubble's largest border, which is similar how the `dashboard`'s border config works:
 
-You can also configure the style of the borders separately:
+Bubble's border:
 ```js
     "tablestyle": {
-        "rounding": 20,
         "transparency": 1,
         "border": {
-            "thickness": "2px",
+            "rounding": {
+                "topLeft": 0,
+                "topRight": 0,
+                "bottomLeft": 0,
+                "bottomRight": 0
+            },
+            "thickness": 2,
             "style": "solid",
             "color": "#00FFFF",
+            "transparency": 1,
             "spacing": 0
         }
     },
 ```
-- `rounding` rounds the corner of the whole bubble.
+
+Cells' border:
+```js
+        "question": {
+            ...
+            "backgroundTransparency": 1,
+            ...
+            "border": {
+                "thickness": 2,
+                "style": "solid",
+                "color": "#00FFFF",
+                "transparency": 1,
+                "rounding": {
+                    "topLeft": 0,
+                    "topRight": 0,
+                    "bottomLeft": 0,
+                    "bottomRight": 0
+                }
+            }
+        }
+```
+- `rounding` sets how rounded the corners should be in pixels.
+- `trasparency` and `backgroundTransparency` sets the transparency of the given element (border, background color, text). Accepts value between `0` and `1`, 1 being solid, 0 being completely transparent (invisible).
 
 
 ## Any options you find in the configuration files that aren't listed here are not yet available.
