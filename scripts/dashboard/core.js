@@ -3,7 +3,7 @@ const server = 'irc-ws.chat.twitch.tv';
 const port = 443;
 
 let socket;
-let reconnectInterval = 1000; // Initial reconnect interval in milliseconds
+let reconnectInterval = 2000; // Initial reconnect interval in milliseconds
 
 
 function connectWebSocket() {
@@ -14,8 +14,8 @@ function connectWebSocket() {
 
         // Authentication and joining channels
         socket.send(`PASS ${window.oauthToken}`);
-        socket.send(`NICK ${window.botUsername}`);
-        socket.send(`JOIN #${window.channel}`);
+        socket.send(`NICK ${window.username}`);
+        socket.send(`JOIN #${window.username}`);
 
         console.log('Authentication sent.');
     };
@@ -74,8 +74,9 @@ function checkWebSocketState() {
 
 // Function to send a message to the Twitch channel
 function sendMessage(message) {
+    //console.log(message);
     if (socket && socket.readyState === WebSocket.OPEN) {
-        socket.send(`PRIVMSG #${window.channel} :${message}`);
+        socket.send(`PRIVMSG #${window.username} :${message}`);
     }
     else {
         console.error('WebSocket connection is not open to send message');
