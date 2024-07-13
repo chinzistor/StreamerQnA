@@ -5,7 +5,7 @@ function handleCommands(message) {
     let index1 = message.indexOf(' #');
     let part1 = message.slice(0, index1);
     let index2 = message.indexOf(' :', index1 + ' #'.length);
-    let user = message.slice(index1 + ' #'.length, index2);
+    let user = part1.split('!')[0].replace(':', '');
     let chat = message.slice(index2 + " :".length);
     // Checking if the sent message starts with !
     if (chat[0] === '!') {
