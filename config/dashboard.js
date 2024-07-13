@@ -16,7 +16,12 @@ window.dashboardStyle = {
                 "style": "solid",
                 "color": "#FFFF00",
                 "spacing": 0,
-                "rounding": 10
+                "rounding": {
+                    "topLeft": 10,
+                    "topRight": 10,
+                    "bottomLeft": 10,
+                    "bottomRight": 10
+                }
             }
         },
         "unselected": {
@@ -33,7 +38,12 @@ window.dashboardStyle = {
                 "style": "solid",
                 "color": "#00FFFF",
                 "spacing": 0,
-                "rounding": 10
+                "rounding": {
+                    "topLeft": 10,
+                    "topRight": 10,
+                    "bottomLeft": 10,
+                    "bottomRight": 10
+                }
             }
         },
         "borderSpacing": 0
@@ -46,7 +56,19 @@ window.dashboardStyle = {
                 "italic": false,
                 "bold": true,
                 "size": 15,
-                "font": "sans serif"
+                "font": "sans serif",
+                "border": {
+                    "thickness": 2,
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "spacing": 0,
+                    "rounding": {
+                        "topLeft": 10,
+                        "topRight": 10,
+                        "bottomLeft": 10,
+                        "bottomRight": 10
+                    }
+                }
             },
             "time": {
                 "background": "#33FFFF",
@@ -54,7 +76,19 @@ window.dashboardStyle = {
                 "italic": true,
                 "bold": false,
                 "size": 15,
-                "font": "sans serif"
+                "font": "sans serif",
+                "border": {
+                    "thickness": 2,
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "spacing": 0,
+                    "rounding": {
+                        "topLeft": 10,
+                        "topRight": 10,
+                        "bottomLeft": 10,
+                        "bottomRight": 10
+                    }
+                }
             },
             "question": {
                 "background": "#008888",
@@ -62,13 +96,31 @@ window.dashboardStyle = {
                 "italic": false,
                 "bold": false,
                 "size": 15,
-                "font": "sans serif"
+                "font": "sans serif",
+                "border": {
+                    "thickness": 2,
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "spacing": 0,
+                    "rounding": {
+                        "topLeft": 10,
+                        "topRight": 10,
+                        "bottomLeft": 10,
+                        "bottomRight": 10
+                    }
+                }
             },
             "border": {
-                "thickness": 0,
-                "style": "none",
+                "thickness": 2,
+                "style": "solid",
                 "color": "#008888",
-                'spacing': 0
+                'spacing': 0,
+                "rounding": {
+                    "topLeft": 10,
+                    "topRight": 10,
+                    "bottomLeft": 10,
+                    "bottomRight": 10
+                }
             }
         },
         "unselected": {
@@ -78,7 +130,19 @@ window.dashboardStyle = {
                 "italic": false,
                 "bold": true,
                 "size": 15,
-                "font": "sans serif"
+                "font": "sans serif",
+                "border": {
+                    "thickness": 2,
+                    "style": "solid",
+                    "color": "#008888",
+                    "spacing": 0,
+                    "rounding": {
+                        "topLeft": 10,
+                        "topRight": 10,
+                        "bottomLeft": 10,
+                        "bottomRight": 10
+                    }
+                }
             },
             "time": {
                 "background": "#0000AA",
@@ -86,7 +150,19 @@ window.dashboardStyle = {
                 "italic": true,
                 "bold": false,
                 "size": 15,
-                "font": "sans serif"
+                "font": "sans serif",
+                "border": {
+                    "thickness": 2,
+                    "style": "solid",
+                    "color": "#008888",
+                    "spacing": 0,
+                    "rounding": {
+                        "topLeft": 10,
+                        "topRight": 10,
+                        "bottomLeft": 10,
+                        "bottomRight": 10
+                    }
+                }
             },
             "question": {
                 "background": "#000055",
@@ -94,13 +170,31 @@ window.dashboardStyle = {
                 "italic": false,
                 "bold": false,
                 "size": 15,
-                "font": "sans serif"
+                "font": "sans serif",
+                "border": {
+                    "thickness": 2,
+                    "style": "solid",
+                    "color": "#008888",
+                    "spacing": 0,
+                    "rounding": {
+                        "topLeft": 10,
+                        "topRight": 10,
+                        "bottomLeft": 10,
+                        "bottomRight": 10
+                    }
+                }
             },
             "border": {
-                "thickness": 0,
-                "style": "none",
+                "thickness": 2,
+                "style": "solid",
                 "color": "#008888",
-                'spacing': 0
+                'spacing': 0,
+                "rounding": {
+                    "topLeft": 10,
+                    "topRight": 10,
+                    "bottomLeft": 10,
+                    "bottomRight": 10
+                }
             }
         }
     }
