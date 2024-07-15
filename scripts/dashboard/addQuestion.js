@@ -1,5 +1,5 @@
 // Adding questions to the dashboard
-function addQuestion(user, group, time, question, store, replaceId, response) {
+function addQuestion(user, group, formattedTime, question, store, replaceId, response) {
     let duplicated = false;
 
 // Filtering
@@ -134,13 +134,8 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
 
         // Adding the time of the question to the dashboard
         const timeParagraph = document.createElement('p');
-        const formattedTime = getTime();
-        if (time === -1) {
-            timeParagraph.textContent = formattedTime;
-        }
-        else {
-            timeParagraph.textContent = time;
-        }
+        const time = getTime(formattedTime);
+        timeParagraph.textContent = time;
         timeParagraph.style.fontFamily = window.dashboardStyle.queue.unselected.time.font;
         timeParagraph.style.fontStyle = window.dashboardStyle.queue.unselected.time.italic;
         timeParagraph.style.fontWeight = window.dashboardStyle.queue.unselected.time.bold;
@@ -290,14 +285,13 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         tableDiv.style.borderTopRightRadius = `${window.dashboardStyle.queue.unselected.border.rounding.topRight}px`;
         tableDiv.style.borderBottomLeftRadius = `${window.dashboardStyle.queue.unselected.border.rounding.bottomLeft}px`;
         tableDiv.style.borderBottomRightRadius = `${window.dashboardStyle.queue.unselected.border.rounding.bottomRight}px`;
-        tableDiv.id = `questionHeader${group}${formattedId}`;
+        tableDiv.id = `${group}${formattedId}`;
 
         // Getting the HTML element to edit based on which command group the command belongs
         const body = document.getElementById(group);
         body.appendChild(tableDiv);
 
         if (store) {
-            //console.log(formattedId);
             localStorage.setItem(`${group}${formattedId}`, `${user}#${formattedTime}#${question}`);
         }
 
