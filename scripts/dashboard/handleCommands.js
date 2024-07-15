@@ -20,8 +20,9 @@ function handleCommands(message) {
                 if (aliases.includes(command)) {
                     let question = chat.replace(/^[^\s]+/, '').trim();
                     //console.log(`${user} ${question} ${group}`);
+                    let now = Date.now();
                     // Handling data
-                    addQuestion(user, group, -1, question, true, -1, commands[group].response);
+                    addQuestion(user, group, now, question, true, -1, commands[group].response);
                 }
             }
         }
