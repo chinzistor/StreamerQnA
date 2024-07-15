@@ -4,12 +4,14 @@
         <meta charset="UTF-8">
         <title>StreamerQnA dashboard</title>
         <!-- Twitch bot communication and browser/docker source editing scripts -->
+        <script src="scripts/checkUpdate.js"></script>
         <script src="scripts/dashboard/addQuestion.js"></script>
         <script src="scripts/dashboard/clearGroup.js"></script>
         <script src="scripts/dashboard/checkStringSimilarities.js"></script>
         <script src="scripts/dashboard/createGroups.js"></script>
         <script src="scripts/dashboard/core.js"></script>
         <script src="scripts/dashboard/deleteMessage.js"></script>
+        <script src="scripts/dashboard/discordWebhook.js"></script>
         <script src="scripts/dashboard/handleCommands.js"></script>
         <script src="scripts/dashboard/hideBubble.js"></script>
         <script src="scripts/dashboard/readData.js"></script>
@@ -45,6 +47,10 @@
                 </tbody>
             </table>
         </div>
+        <div>
+            <p id="latestRelease" style="display:none;">There's a new release of StreamerQnA: <a id="updateLink" href=""></a></p>
+            <p id="currentVersion" style="display: none;"></p>
+        </div>
         <div id="questionTableBody" style="width:100%; height:100%; overflow-y:auto;">
             <!-- Data will be displayed here -->
         </div>
@@ -53,6 +59,7 @@
             //console.log(localStorage.getItem('bubbleData'));
             connectWebSocket();
             createGroups();
+            checkUpdate();
         </script>
     </body>
 </html>
