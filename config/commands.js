@@ -10,7 +10,12 @@ window.commands = {
         "duplicationResponse": [
             "%user this question was already submitted.",
             "%user we've seen this question already."
-        ]
+        ],
+        "discord": {
+            "enabled": false,
+            "webhookUrl": "",
+            "color": "#00FFFF"
+        }
     },
     "requests": {
         "response": [
@@ -22,7 +27,12 @@ window.commands = {
         ],
         "duplicationResponse": [
             "%user this request is already submitted."
-        ]
+        ],
+        "discord": {
+            "enabled": false,
+            "webhookUrl": "",
+            "color": "#00FFFF"
+        }
     },
     "compliments": {
         "response": [
@@ -34,6 +44,11 @@ window.commands = {
         ],
         "duplicationResponse": [
             "%user yes, we know, someone already said that."
-        ]
+        ],
+        "discord": {
+            "enabled": false,
+            "webhookUrl": "",
+            "color": "#00FFFF"
+        }
     }
 };
