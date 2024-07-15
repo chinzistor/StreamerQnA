@@ -2,7 +2,7 @@
 function formatColor(color, transparency) {
     let rgb;
 
-    if (color.startsWith('#')) {
+    if (color[0] == '#') {
         // Remove the hash at the start if it's there
         let hex = color.replace(/^#/, '');
 
