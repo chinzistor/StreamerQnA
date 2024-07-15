@@ -16,6 +16,9 @@ Example URLs
 > [!TIP]
 > Make sure to replace `user` with your username.
 
+> [!TIP]
+> An easy way to get this URL is to open the .html files in a browser then copy the URL from there.
+
 Click `Apply`.
 
 ![Screenshot of the custom dockers window](/screenshots/docker.png)
