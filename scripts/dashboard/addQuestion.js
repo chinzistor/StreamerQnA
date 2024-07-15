@@ -308,8 +308,10 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
     else {
         // If a response is set in bot.js
         if (window.commands[group].duplicationResponse != "") {
+            const responses = window.commands[group].duplicationResponse;
+            const response = responses[Math.floor(Math.random() * responses.length)].replace('%user', user);
             // Send the duplication response
-            sendMessage(`${user}, ${window.commands[group].duplicationResponse}`);
+            sendMessage(response);
         }
     }
 
@@ -317,6 +319,8 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
 
     // Responding to the command
     if (response != "" && !duplicated) {
-        sendMessage(`${user}, ${window.commands[group].response}`);
+        const responses = window.commands[group].response;
+        const response = responses[Math.floor(Math.random() * responses.length)].replace('%user', user);
+        sendMessage(response);
     }
 }
