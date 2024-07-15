@@ -110,7 +110,7 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         nameParagraph.style.fontFamily = window.dashboardStyle.queue.unselected.name.font;
         nameParagraph.style.fontStyle = window.dashboardStyle.queue.unselected.name.italic;
         nameParagraph.style.fontWeight = window.dashboardStyle.queue.unselected.name.bold;
-        nameParagraph.style.size = window.dashboardStyle.queue.unselected.name.size;
+        nameParagraph.style.fontSize = `${window.dashboardStyle.queue.unselected.name.size}pt`;
         nameParagraph.style.color = window.dashboardStyle.queue.unselected.name.color
         nameParagraph.style.paddingLeft = `${Math.max(window.dashboardStyle.queue.unselected.name.border.rounding.topLeft + 5, window.dashboardStyle.queue.unselected.border.rounding.topLeft / 2)}px`;
         nameParagraph.style.paddingRight = `${window.dashboardStyle.queue.unselected.name.border.rounding.topRight + 5}px`;
@@ -121,7 +121,10 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         nameCell.appendChild(nameParagraph);
         nameCell.style.width = '100%';
         nameCell.style.backgroundColor = window.dashboardStyle.queue.unselected.name.background;
-        nameCell.style.border = `${window.dashboardStyle.queue.unselected.name.border.thickness}px ${window.dashboardStyle.queue.unselected.name.border.style} ${window.dashboardStyle.queue.unselected.name.border.color}`;
+        nameCell.style.borderTop = `${window.dashboardStyle.queue.unselected.name.border.top.thickness}px ${window.dashboardStyle.queue.unselected.name.border.top.style} ${window.dashboardStyle.queue.unselected.name.border.top.color}`;
+        nameCell.style.borderBottom = `${window.dashboardStyle.queue.unselected.name.border.bottom.thickness}px ${window.dashboardStyle.queue.unselected.name.border.bottom.style} ${window.dashboardStyle.queue.unselected.name.border.bottom.color}`;
+        nameCell.style.borderLeft = `${window.dashboardStyle.queue.unselected.name.border.left.thickness}px ${window.dashboardStyle.queue.unselected.name.border.left.style} ${window.dashboardStyle.queue.unselected.name.border.left.color}`;
+        nameCell.style.borderRight = `${window.dashboardStyle.queue.unselected.name.border.right.thickness}px ${window.dashboardStyle.queue.unselected.name.border.right.style} ${window.dashboardStyle.queue.unselected.name.border.right.color}`;
         nameCell.style.borderTopLeftRadius = `${Math.max(window.dashboardStyle.queue.unselected.name.border.rounding.topLeft, window.dashboardStyle.queue.unselected.border.rounding.topLeft)}px`
         nameCell.style.borderTopRightRadius = `${window.dashboardStyle.queue.unselected.name.border.rounding.topRight}px`;
         nameCell.style.borderBottomLeftRadius = `${window.dashboardStyle.queue.unselected.name.border.rounding.bottomLeft}px`;
@@ -141,7 +144,7 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         timeParagraph.style.fontFamily = window.dashboardStyle.queue.unselected.time.font;
         timeParagraph.style.fontStyle = window.dashboardStyle.queue.unselected.time.italic;
         timeParagraph.style.fontWeight = window.dashboardStyle.queue.unselected.time.bold;
-        timeParagraph.style.size = window.dashboardStyle.queue.unselected.time.size;
+        timeParagraph.style.fontSize = `${window.dashboardStyle.queue.unselected.time.size}pt`;
         timeParagraph.style.color = window.dashboardStyle.queue.unselected.time.color
         timeParagraph.style.paddingLeft = `${window.dashboardStyle.queue.unselected.time.border.rounding.topLeft + 5}px`;
         timeParagraph.style.paddingRight = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.topRight / 2, window.dashboardStyle.queue.unselected.time.border.rounding.topRight + 5)}px`;
@@ -152,7 +155,10 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         const timeCell = document.createElement('td');
         timeCell.appendChild(timeParagraph);
         timeCell.style.backgroundColor = window.dashboardStyle.queue.unselected.time.background;
-        timeCell.style.border = `${window.dashboardStyle.queue.unselected.time.border.thickness}px ${window.dashboardStyle.queue.unselected.time.border.style} ${window.dashboardStyle.queue.unselected.time.border.color}`;
+        timeCell.style.borderTop = `${window.dashboardStyle.queue.unselected.time.border.top.thickness}px ${window.dashboardStyle.queue.unselected.time.border.top.style} ${window.dashboardStyle.queue.unselected.time.border.top.color}`;
+        timeCell.style.borderBottom = `${window.dashboardStyle.queue.unselected.time.border.bottom.thickness}px ${window.dashboardStyle.queue.unselected.time.border.bottom.style} ${window.dashboardStyle.queue.unselected.time.border.bottom.color}`;
+        timeCell.style.borderLeft = `${window.dashboardStyle.queue.unselected.time.border.left.thickness}px ${window.dashboardStyle.queue.unselected.time.border.left.style} ${window.dashboardStyle.queue.unselected.time.border.left.color}`;
+        timeCell.style.borderRight = `${window.dashboardStyle.queue.unselected.time.border.right.thickness}px ${window.dashboardStyle.queue.unselected.time.border.right.style} ${window.dashboardStyle.queue.unselected.time.border.right.color}`;
         timeCell.style.borderTopLeftRadius = `${window.dashboardStyle.queue.unselected.time.border.rounding.topLeft}px`;
         timeCell.style.borderBottomLeftRadius = `${window.dashboardStyle.queue.unselected.time.border.rounding.bottomLeft}px`;
         timeCell.style.borderBottomRightRadius = `${window.dashboardStyle.queue.unselected.time.border.rounding.bottomRight}px`;
@@ -161,7 +167,7 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         timeCell.style.textAlign = 'right';
         timeCell.style.whiteSpace = 'nowrap';
         timeCell.style.overflow = 'hidden';
-        timeCell.style.width = '100%';
+        timeCell.style.width = `${time.length * window.dashboardStyle.queue.unselected.time.size * 0.75 + Math.max(window.bubbleStyle.tablestyle.border.rounding.topRight, window.dashboardStyle.queue.unselected.time.border.rounding.topRight)}px`;
 
         // Creating the row for the name and time
         const row = document.createElement('tr');
@@ -174,6 +180,7 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
 
         // Creating the body for name and time
         const tableBody = document.createElement('table');
+        tableBody.style.borderSpacing = `${window.dashboardStyle.queue.unselected.border.spacing}px`;
         tableBody.appendChild(row);
         tableBody.style.width = '100%';
         tableBody.style.tableLayout = 'fixed';
@@ -185,7 +192,7 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         questionParagraph.style.fontFamily = window.dashboardStyle.queue.unselected.question.font;
         questionParagraph.style.fontStyle = window.dashboardStyle.queue.unselected.question.italic;
         questionParagraph.style.fontWeight = window.dashboardStyle.queue.unselected.question.bold;
-        questionParagraph.style.size = window.dashboardStyle.queue.unselected.question.size;
+        questionParagraph.style.fontSize = `${window.dashboardStyle.queue.unselected.question.size}pt`;
         questionParagraph.style.color = window.dashboardStyle.queue.unselected.question.color;
         questionParagraph.style.paddingLeft = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.bottomLeft / 2, window.dashboardStyle.queue.unselected.question.border.rounding.bottomLeft + 5)}px`;
         questionParagraph.style.lineHeight = 1;
@@ -197,9 +204,9 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         questionCell.className = 'question';
         questionCell.style.width = '100%';
         questionCell.style.backgroundColor = window.dashboardStyle.queue.unselected.question.background;
-        questionCell.style.borderTopLeftRadius = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.topLeft, window.dashboardStyle.queue.unselected.question.border.rounding.topLeft)}px`;
+        questionCell.style.borderTopLeftRadius = `${window.dashboardStyle.queue.unselected.question.border.rounding.topLeft}px`;
         questionCell.style.borderTopRightRadius = `${window.dashboardStyle.queue.unselected.question.border.rounding.topRight}px`;
-        questionCell.style.borderBottomLeftRadius = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.bottomLeft, window.dashboardStyle.queue.unselected.question.border.rounding.bottomLeft)}px`;
+        questionCell.style.borderBottomLeftRadius = `${window.dashboardStyle.queue.unselected.question.border.rounding.bottomLeft}px`;
         questionCell.style.borderBottomRightRadius = `${window.dashboardStyle.queue.unselected.question.border.rounding.bottomRight}px`;
         questionCell.id = `questionCell${group}${formattedId}`;
 
@@ -238,8 +245,9 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         const deleteCell = document.createElement('td');
         deleteCell.appendChild(questionDelete);
         deleteCell.justifyContent = 'center';
-        deleteCell.alignItems = 'center';
-        deleteCell.style.width = `${window.dashboardStyle.queue.unselected.question.size * 2}px`;
+        deleteCell.alignItems = 'left';
+        deleteCell.style.width = `${window.dashboardStyle.queue.unselected.question.size * 2 + Math.max(window.dashboardStyle.queue.unselected.border.rounding.bottomRight / 2, window.dashboardStyle.queue.unselected.question.border.rounding.bottomRight + 5)}px`;
+        deleteCell.id = `delCell${formattedId}`;
 
         // Creating the row for the question and the buttons
         const questionRow = document.createElement('tr');
@@ -255,13 +263,18 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         const tableBody2 = document.createElement('table')
         tableBody2.appendChild(questionRow);
         tableBody2.style.width = '100%';
-        tableBody2.style.spacing = `${window.dashboardStyle.queue.unselected.border.spacing}px`;
+        tableBody2.style.borderSpacing = `${window.dashboardStyle.queue.unselected.border.spacing}px`;
         tableBody2.style.tableLayout = 'fixed';
-        tableBody2.style.border = `${window.dashboardStyle.queue.unselected.question.border.thickness}px ${window.dashboardStyle.queue.unselected.question.border.style} ${window.dashboardStyle.queue.unselected.question.border.color}`;
+        tableBody2.style.borderTop = `${window.dashboardStyle.queue.unselected.question.border.top.thickness}px ${window.dashboardStyle.queue.unselected.question.border.top.style} ${window.dashboardStyle.queue.unselected.question.border.top.color}`;
+        tableBody2.style.borderBottom = `${window.dashboardStyle.queue.unselected.question.border.bottom.thickness}px ${window.dashboardStyle.queue.unselected.question.border.bottom.style} ${window.dashboardStyle.queue.unselected.question.border.bottom.color}`;
+        tableBody2.style.borderLeft = `${window.dashboardStyle.queue.unselected.question.border.left.thickness}px ${window.dashboardStyle.queue.unselected.question.border.left.style} ${window.dashboardStyle.queue.unselected.question.border.left.color}`;
+        tableBody2.style.borderRight = `${window.dashboardStyle.queue.unselected.question.border.right.thickness}px ${window.dashboardStyle.queue.unselected.question.border.right.style} ${window.dashboardStyle.queue.unselected.question.border.right.color}`;
         tableBody2.style.borderTopLeftRadius = `${window.dashboardStyle.queue.unselected.question.border.rounding.topLeft}px`;
         tableBody2.style.borderTopRightRadius = `${window.dashboardStyle.queue.unselected.question.border.rounding.topRight}px`;
         tableBody2.style.borderBottomLeftRadius = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.bottomLeft, window.dashboardStyle.queue.unselected.question.border.rounding.bottomLeft)}px`;
         tableBody2.style.borderBottomRightRadius = `${Math.max(window.dashboardStyle.queue.unselected.border.rounding.bottomRight, window.dashboardStyle.queue.unselected.question.border.rounding.bottomRight)}px`;
+        tableBody2.id = `questionBody${group}${formattedId}`;
+
 
         // Creating the table for the question
         const tableDiv = document.createElement('div');
@@ -269,12 +282,15 @@ function addQuestion(user, group, time, question, store, replaceId, response) {
         tableDiv.className = 'table'
         tableDiv.appendChild(tableBody);
         tableDiv.appendChild(tableBody2);
-        tableDiv.style.border = `${window.dashboardStyle.queue.unselected.border.thickness}px ${window.dashboardStyle.queue.unselected.border.style} ${window.dashboardStyle.queue.unselected.border.color}`;
+        tableDiv.style.borderTop = `${window.dashboardStyle.queue.unselected.border.top.thickness}px ${window.dashboardStyle.queue.unselected.border.top.style} ${window.dashboardStyle.queue.unselected.border.top.color}`;
+        tableDiv.style.borderBottom = `${window.dashboardStyle.queue.unselected.border.bottom.thickness}px ${window.dashboardStyle.queue.unselected.border.bottom.style} ${window.dashboardStyle.queue.unselected.border.bottom.color}`;
+        tableDiv.style.borderLeft = `${window.dashboardStyle.queue.unselected.border.left.thickness}px ${window.dashboardStyle.queue.unselected.border.left.style} ${window.dashboardStyle.queue.unselected.border.left.color}`;
+        tableDiv.style.borderRight = `${window.dashboardStyle.queue.unselected.border.right.thickness}px ${window.dashboardStyle.queue.unselected.border.right.style} ${window.dashboardStyle.queue.unselected.border.right.color}`;
         tableDiv.style.borderTopLeftRadius = `${window.dashboardStyle.queue.unselected.border.rounding.topLeft}px`;
         tableDiv.style.borderTopRightRadius = `${window.dashboardStyle.queue.unselected.border.rounding.topRight}px`;
-        tableDiv.style.borderBottomLeftRadius = `${window.dashboardStyle.queue.unselected.border.rounding.bottomLeft}px`
-        tableDiv.style.borderBottomRightRadius = `${window.dashboardStyle.queue.unselected.border.rounding.bottomRight}px`
-        tableDiv.style.borderSpacing = `${window.dashboardStyle.queue.unselected.border.spacing}px`;
+        tableDiv.style.borderBottomLeftRadius = `${window.dashboardStyle.queue.unselected.border.rounding.bottomLeft}px`;
+        tableDiv.style.borderBottomRightRadius = `${window.dashboardStyle.queue.unselected.border.rounding.bottomRight}px`;
+        tableDiv.id = `questionHeader${group}${formattedId}`;
 
         // Getting the HTML element to edit based on which command group the command belongs
         const body = document.getElementById(group);
