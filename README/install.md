@@ -38,7 +38,7 @@ In the newly opened window:
   - macOS: `file://Users/user/Desktop/bubble.html`
 > [!TIP]
 > Make sure to replace `user` with your username.
-- Recommended width is 600 and recommended height is 400 with the default configuration.
+- Recommended width is 600 and recommended height is 400 with the default style configuration and for a 1080p stream.
 - Select `Control audio via OBS`.
 - Delete the content of `Custom CSS`.
 
