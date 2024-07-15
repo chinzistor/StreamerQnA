@@ -244,6 +244,9 @@ Open `/config/bubble.js` and edit the settings.
 All text settings are the same as in the `dashboard` settings within the `queue` section.
 However there are 2 extra option in this config, `time` and `transparency`:
 - `format` sets how the time text is going to look like. The system will replace the following syntaxes:
+  - `%y` is years
+  - `%M` is months
+  - `%d` is days
   - `%h` is hours
   - `%H` is hours in 12 hours format
   - `%m` is minutes
