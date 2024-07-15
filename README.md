@@ -22,3 +22,27 @@ If you click the closed eye icon, it'll switch back to the open eye icon and the
 
 Once you load the browser source into OBS, it'll start frequently checking which message is tagged, and if it sees there's a tagged message, it'll show it on the stream in the style set in [bubble.js](/config/bubble.js).
 If it sees that there's no tagged message, it'll clear the bubble from all content making it invisible thus not disturbing.
+
+
+## Features
+- Command flexibility:
+  - You can set up as many commands as you like (it is recommended to keep them low).
+  - You can set up as many aliases to each commands as you like (it is recommended to keep them low).
+  - You can customize the bot's response when a question gets registered, or disable it completely.
+    - Multiple possible responses can be set up and the bot will choose randomly from the list.
+- Spam detection:
+  - It is possible to deny submissions if there are already registered quetions that look exactly the same or somewhat similar.
+    - You can customize how sensitive the similarity detection should be.
+  - You can customize the bot's response when a question was already asked, or disable it completely.
+    - Multiple possible responses can be set up and the bot will choose randomly from the list.
+- Feature rich customization:
+  - You can individually edit how the dashboard and the bubble on stream should look like:
+    - custom colors
+    - roundable corners
+    - each border on each side can be individually editted
+    - use your own font
+    - edit each text's font size
+- Easy handling of submissions:
+  - The system will save the submitted questions, so if you close OBS and reopen it, the already submitted questions won't be lost.
+  - You can individually show all questions one by one.
+  - Each submission can be deleted individually, or the whole queue with the dedicated buttons.
