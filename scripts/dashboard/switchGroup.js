@@ -4,7 +4,10 @@ function switchGroup(name) {
         // Hiding all groups
         document.getElementById(group).style.display = "none";
         // Setting all buttons to the unselected state
-        document.getElementById(group + 'Div').style.border = `${window.dashboardStyle.buttons.unselected.border.thickness}px ${window.dashboardStyle.buttons.unselected.border.style} ${window.dashboardStyle.buttons.unselected.border.color}`;
+        document.getElementById(group + 'Div').style.borderTop = `${window.dashboardStyle.buttons.unselected.border.top.thickness}px ${window.dashboardStyle.buttons.unselected.border.top.style} ${window.dashboardStyle.buttons.unselected.border.top.color}`;
+        document.getElementById(group + 'Div').style.borderBottom = `${window.dashboardStyle.buttons.unselected.border.bottom.thickness}px ${window.dashboardStyle.buttons.unselected.border.bottom.style} ${window.dashboardStyle.buttons.unselected.border.bottom.color}`;
+        document.getElementById(group + 'Div').style.borderLeft = `${window.dashboardStyle.buttons.unselected.border.left.thickness}px ${window.dashboardStyle.buttons.unselected.border.left.style} ${window.dashboardStyle.buttons.unselected.border.left.color}`;
+        document.getElementById(group + 'Div').style.borderRight = `${window.dashboardStyle.buttons.unselected.border.right.thickness}px ${window.dashboardStyle.buttons.unselected.border.right.style} ${window.dashboardStyle.buttons.unselected.border.right.color}`;
         document.getElementById(group + 'Div').style.borderSpacing = `${window.dashboardStyle.buttons.unselected.border.spacing}px`;
         document.getElementById(group + 'Div').style.backgroundColor = window.dashboardStyle.buttons.unselected.background;
         document.getElementById(group + 'Text').style.fontWeight = window.dashboardStyle.buttons.unselected.italic;
@@ -23,7 +26,10 @@ function switchGroup(name) {
     // Showing the specific group
     document.getElementById(name).style.display = "";
     // Setting the specific button to the selected state
-    document.getElementById(name + 'Div').style.border = `${window.dashboardStyle.buttons.selected.border.thickness}px ${window.dashboardStyle.buttons.selected.border.style} ${window.dashboardStyle.buttons.selected.border.color}`
+    document.getElementById(name + 'Div').style.borderTop = `${window.dashboardStyle.buttons.selected.border.top.thickness}px ${window.dashboardStyle.buttons.selected.border.top.style} ${window.dashboardStyle.buttons.selected.border.top.color}`
+    document.getElementById(name + 'Div').style.borderBottom = `${window.dashboardStyle.buttons.selected.border.bottom.thickness}px ${window.dashboardStyle.buttons.selected.border.bottom.style} ${window.dashboardStyle.buttons.selected.border.bottom.color}`
+    document.getElementById(name + 'Div').style.borderLeft = `${window.dashboardStyle.buttons.selected.border.left.thickness}px ${window.dashboardStyle.buttons.selected.border.left.style} ${window.dashboardStyle.buttons.selected.border.left.color}`
+    document.getElementById(name + 'Div').style.borderRight = `${window.dashboardStyle.buttons.selected.border.right.thickness}px ${window.dashboardStyle.buttons.selected.border.right.style} ${window.dashboardStyle.buttons.selected.border.right.color}`
     document.getElementById(name + 'Div').style.borderSpacing = `${window.dashboardStyle.buttons.selected.border.spacing}px`;
     document.getElementById(name + 'Div').style.backgroundColor = window.dashboardStyle.buttons.selected.background;
     document.getElementById(name + 'Text').style.fontWeight = window.dashboardStyle.buttons.selected.italic;
