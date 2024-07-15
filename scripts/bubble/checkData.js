@@ -35,7 +35,7 @@ function checkData() {
             let index1 = value.indexOf('#');
             let user = value.slice(0, index1);
             let index2 = value.indexOf('#', index1 + '#'.length);
-            let time = value.slice(index1 + '#'.length, index2);
+            let time = getTime(+value.slice(index1 + '#'.length, index2));
             let question = value.slice(index2 + "#".length);
             let questionGroup = key.replace(numId, '');
             const data = localStorage.getItem(key);
