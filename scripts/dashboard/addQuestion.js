@@ -315,6 +315,8 @@ function addQuestion(user, group, formattedTime, question, store, replaceId, res
     if (response != "" && !duplicated) {
         const responses = window.commands[group].response;
         const response = responses[Math.floor(Math.random() * responses.length)].replace('%user', user);
+        // Handling webhook integration
+        discordWebhook(user, formattedTime, question, group);
         sendMessage(response);
     }
 }
