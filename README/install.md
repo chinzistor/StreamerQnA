@@ -1,6 +1,6 @@
 # Installation
 ## Download the file
-Download the latest version and unzip the downloaded .zip file to an easily accessible location (for example your desktop).
+Download the [latest version](/releases) and unzip the downloaded .zip file to an easily accessible location (for example your desktop).
 
 ## Add the necessary sources to OBS Studio
 ### Dashboard
