@@ -120,32 +120,55 @@ You can edit both the selected and unselected buttons separately.
             "background": "#00AAAA",
             "hoverColor": "#006666",
             "hoverTime": 1.0,
-            "text": "#FFFF00",
+            "color": "#FFFF00",
             "italic": false,
             "bold": true,
             "font": "sans serif",
             "size": 14,
             "border": {
-                "thickness": 2,
-                "style": "solid",
-                "color": "#FFFF00",
-                "spacing": 0
+                "top": {
+                    "style": "solid",
+                    "color": "#FFFF00",
+                    "thickness": 2
+                },
+                "bottom": {
+                    "style": "solid",
+                    "color": "#FFFF00",
+                    "thickness": 2
+                },
+                "left": {
+                    "style": "solid",
+                    "color": "#FFFF00",
+                    "thickness": 2
+                },
+                "right": {
+                    "style": "solid",
+                    "color": "#FFFF00",
+                    "thickness": 2
+                },
+                "spacing": 0,
+                "rounding": {
+                    "topLeft": 10,
+                    "topRight": 10,
+                    "bottomLeft": 10,
+                    "bottomRight": 10
+                }
             }
 ```
 - `hoverColor` sets the background color of the button when you hover over them with your cursor.
 - `hoverTime` sets how fast the color changing animation is going to last in seconds.
-- `border` is for changing the buttons' outline's look:
-  - `thickness` sets how thick this border is going to be in pixels.
-  - `style` sets what style the border is going to have. Accepted values: `dotted` `dqashed` `solid` `double` `groove` `ridge` `inset` `outset` `none`
-  - `color` sets the border's color.
-  - `spacing` sets the distance between the individual elements (name, time, question slots).
 - `background` sets the background color of the button.
 - `color` sets the color of the text.
 - `italic` sets if the text should be italic. Accepted values: `true` `false`
 - `bold` sets if the text should be bold. Accepted values: `true` `false`
 - `font` sets the font of the text.
 - `size` sets the font size.
-You've probably noticed that within the `buttons` node you have a `borderSpacing` option, this set how big gap in pixels is going to be between the buttons.
+- `border` is for changing the buttons' outline's look:
+  - `thickness` sets how thick this border is going to be in pixels.
+  - `style` sets what style the border is going to have. Accepted values: `dotted` `dashed` `solid` `double` `groove` `ridge` `inset` `outset` `none`
+  - `color` sets the border's color.
+  - `spacing` sets the distance between the individual elements (name, time, question slots).
+  - `rounding` sets how much each corner is rounded in pixels.
 
 Within the `queue` settings you can separately change each section's design.
 `selected` section is what for the selected question that is shown on the stream, the rest are the `unselected`.
@@ -156,71 +179,122 @@ Within the `queue` settings you can separately change each section's design.
   - `color` sets the color of the text. Accepts any HTML colortags and HEX codes.
   - `italic` sets if the text should be italic. Accepted values: `true` `false`
   - `bold` sets if the text should be bold. Accepted values: `true` `false`
-  - `font` sets the font of the text.
   - `size` sets the font size.
+  - `font` sets the font of the text.
+  - `border` is for changing the elements' outline's look:
+    - `thickness` sets how thick this border is going to be in pixels.
+    - `style` sets what style the border is going to have. Accepted values: `dotted` `dashed` `solid` `double` `groove` `ridge` `inset` `outset` `none`
+    - `color` sets the border's color.
+    - `spacing` sets the distance between the individual elements (name, time, question slots).
+    - `rounding` sets how much each corner is rounded in pixels.
 The formatting of the time is done in `/config/bubble.js`.
+
 And you have a separate node, `border`, here you can set the design of the border that surrounds the messages within your queues.
 - `thickness` sets how thick this border is going to be in pixels.
 - `style` sets what style the border is going to have. Accepted values: `dotted` `dqashed` `solid` `double` `groove` `ridge` `inset` `outset` `none`
 - `color` sets the border's color.
 - `spacing` sets the distance between the individual elements (name, time, question slots).
+- `rounding` sets how much each corner is rounded in pixels.
 
 
 ### Bubble
 Open `/config/bubble.js` and edit the settings.
 
 All text settings are the same as in the `dashboard` settings within the `queue` section.
-However there's an extra option for `time` here:
+However there are 2 extra option in this config, `time` and `transparency`:
 - `format` sets how the time text is going to look like. The system will replace the following syntaxes:
   - `%h` is hours
   - `%H` is hours in 12 hours format
   - `%m` is minutes
   - `%s` is seconds
   - `%p` is the perios (AM or PM)
-Also you can individually edit each cell's border, just like the whole bubble's largest border, which is similar how the `dashboard`'s border config works:
+- `trasparency` and `backgroundTransparency` sets the transparency of the given element (border, background color, text). Accepts value between `0` and `1`, 1 being solid, 0 being completely transparent (invisible).
+Also you can individually edit each cell's border, just like the whole bubble's largest border, which is similar how the `dashboard`'s border config works.
 
 Bubble's border:
 ```js
     "tablestyle": {
         "transparency": 1,
         "border": {
-            "rounding": {
-                "topLeft": 0,
-                "topRight": 0,
-                "bottomLeft": 0,
-                "bottomRight": 0
+            "top": {
+                "style": "solid",
+                "color": "#00FFFF",
+                "thickness": 2,
+                "transparency": 1
             },
-            "thickness": 2,
-            "style": "solid",
-            "color": "#00FFFF",
-            "transparency": 1,
-            "spacing": 0
+            "bottom": {
+                "style": "solid",
+                "color": "#00FFFF",
+                "thickness": 2,
+                "transparency": 1
+            },
+            "left": {
+                "style": "solid",
+                "color": "#00FFFF",
+                "thickness": 2,
+                "transparency": 1
+            },
+            "right": {
+                "style": "solid",
+                "color": "#00FFFF",
+                "thickness": 2,
+                "transparency": 1
+            },
+            "spacing": 0,
+            "rounding": {
+                "topLeft": 30,
+                "topRight": 10,
+                "bottomLeft": 10,
+                "bottomRight": 30
+            }
         }
-    },
+    }
 ```
 
 Cells' border:
 ```js
         "question": {
-            ...
+            "background": "#008888",
+            "color": "#AAAA00",
+            "italic": false,
+            "bold": false,
+            "size": 15,
+            "transparency": 1,
             "backgroundTransparency": 1,
-            ...
+            "font": "sans serif",
             "border": {
-                "thickness": 2,
-                "style": "solid",
-                "color": "#00FFFF",
-                "transparency": 1,
+                "top": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
+                "bottom": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
+                "left": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
+                "right": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
                 "rounding": {
-                    "topLeft": 0,
-                    "topRight": 0,
-                    "bottomLeft": 0,
-                    "bottomRight": 0
+                    "topLeft": 10,
+                    "topRight": 10,
+                    "bottomLeft": 10,
+                    "bottomRight": 10
                 }
             }
         }
 ```
-- `rounding` sets how rounded the corners should be in pixels.
-- `trasparency` and `backgroundTransparency` sets the transparency of the given element (border, background color, text). Accepts value between `0` and `1`, 1 being solid, 0 being completely transparent (invisible).
-
 
 ## Any options you find in the configuration files that aren't listed here are not yet available.
