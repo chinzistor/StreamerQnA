@@ -42,9 +42,15 @@ function createGroups() {
             styleDict = window.dashboardStyle.buttons.unselected;
         }
         // Styling the buttons
-        buttonDiv.style.border = `${styleDict.border.thickness}px ${styleDict.border.style} ${styleDict.border.color}`;
+        buttonDiv.style.borderTop = `${styleDict.border.top.thickness}px ${styleDict.border.top.style} ${styleDict.border.top.color}`;
+        buttonDiv.style.borderBottom = `${styleDict.border.bottom.thickness}px ${styleDict.border.bottom.style} ${styleDict.border.bottom.color}`;
+        buttonDiv.style.borderLeft = `${styleDict.border.left.thickness}px ${styleDict.border.left.style} ${styleDict.border.left.color}`;
+        buttonDiv.style.borderRight = `${styleDict.border.right.thickness}px ${styleDict.border.right.style} ${styleDict.border.right.color}`;
         buttonDiv.style.backgroundColor = styleDict.background;
-        buttonDiv.style.borderRadius = `${styleDict.border.rounding}px`;
+        buttonDiv.style.borderTopLeftRadius = `${styleDict.border.rounding.topLeft}px`;
+        buttonDiv.style.borderTopRightRadius = `${styleDict.border.rounding.topRight}px`;
+        buttonDiv.style.borderBottomLeftRadius = `${styleDict.border.rounding.bottomLeft}px`;
+        buttonDiv.style.borderBottomRightRadius = `${styleDict.border.rounding.bottomRight}px`;
         buttonDiv.addEventListener('mouseenter', () => {
             buttonDiv.style.backgroundColor = styleDict.hoverColor;
         });
@@ -80,9 +86,15 @@ function createGroups() {
                 clearGroup(group);
             };
             // Styling the box
-            clearGroupButton.style.border = `${window.dashboardStyle.buttons.selected.border.thickness}px ${window.dashboardStyle.buttons.selected.border.style} ${window.dashboardStyle.buttons.selected.border.color}`;
+            clearGroupButton.style.borderTop = `${window.dashboardStyle.buttons.selected.border.top.thickness}px ${window.dashboardStyle.buttons.selected.border.top.style} ${window.dashboardStyle.buttons.selected.border.top.color}`;
+            clearGroupButton.style.borderBottom = `${window.dashboardStyle.buttons.selected.border.bottom.thickness}px ${window.dashboardStyle.buttons.selected.border.bottom.style} ${window.dashboardStyle.buttons.selected.border.bottom.color}`;
+            clearGroupButton.style.borderLeft = `${window.dashboardStyle.buttons.selected.border.left.thickness}px ${window.dashboardStyle.buttons.selected.border.left.style} ${window.dashboardStyle.buttons.selected.border.left.color}`;
+            clearGroupButton.style.borderRight = `${window.dashboardStyle.buttons.selected.border.right.thickness}px ${window.dashboardStyle.buttons.selected.border.right.style} ${window.dashboardStyle.buttons.selected.border.right.color}`;
             clearGroupButton.style.backgroundColor = window.dashboardStyle.buttons.selected.background;
-            clearGroupButton.style.borderRadius = `${window.dashboardStyle.buttons.selected.border.rounding}px`;
+            clearGroupButton.style.borderTopLeftRadius = `${window.dashboardStyle.buttons.selected.border.rounding.topLeft}px`;
+            clearGroupButton.style.borderTopRightRadius = `${window.dashboardStyle.buttons.selected.border.rounding.topRight}px`;
+            clearGroupButton.style.borderBottomLeftRadius = `${window.dashboardStyle.buttons.selected.border.rounding.bottomLeft}px`;
+            clearGroupButton.style.borderBottomRightRadius = `${window.dashboardStyle.buttons.selected.border.rounding.bottomRight}px`;
             clearGroupButton.addEventListener('mouseenter', () => {
                 clearGroupButton.style.backgroundColor = window.dashboardStyle.buttons.selected.hoverColor;
             });
