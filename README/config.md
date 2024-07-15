@@ -185,7 +185,7 @@ Go to your Discord server, select or create a text channel you want to use for s
 
 Click on the Edit icon next to the channels name.
 
-![Screenshopt of a Discord text channel](/screenshots/discordChannel.png)
+![Screenshot of a Discord text channel](/screenshots/discordChannel.png)
 
 Go to `Integrations` and click on `Create Webhook`.
 
