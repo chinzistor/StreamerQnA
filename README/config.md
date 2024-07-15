@@ -46,22 +46,42 @@ Open `/config/commands.js` and edit the settings.
 ```js
 window.commands = {
     "questions": {
-        "response": "your question has been saved.",
+        "response": [
+            "%user your question has been saved.",
+            "Your question will be soon answered, %user"
+        ],
         "aliases": [
             "question"
-        ]},
+        ],
+        "duplicationResponse": [
+            "%user this question was already submitted.",
+            "%user we've seen this question already."
+        ]
+    },
     "requests": {
-        "response": "your request has been stored.",
+        "response": [
+            "%user your request has been stored."
+        ],
         "aliases": [
             "request",
             "req"
-        ]},
+        ],
+        "duplicationResponse": [
+            "%user this request is already submitted."
+        ]
+    },
     "compliments": {
-        "response": "we've recieved your compliment.",
+        "response": [
+            "%user we've recieved your compliment."
+        ],
         "aliases": [
             "compliment",
             "comp"
-        ]}
+        ],
+        "duplicationResponse": [
+            "%user yes, we know, someone already said that."
+        ]
+    }
 };
 ```
 To add a command group create a node within `questions` like this:
@@ -69,8 +89,9 @@ To add a command group create a node within `questions` like this:
 window.commands = {
     "questions": {
         "example command": {
-            "response": "",
-            "aliases": []
+            "response": [],
+            "aliases": [],
+            "duplicationResponse": []
         }
     }
 };
@@ -80,20 +101,40 @@ The command group's name is going to show up in your dashboard. In this case you
 To add a command list all the commands you want to listen to in `aliases`. Viewers can use all listed commands to push a question into this cathegory.
 ```js
 window.commands = {
-    "questions": {
-        "example command": {
-            "response": "",
-            "aliases": [
-                "command1",
-                "command2"
-            ]
-        }
+    "example command": {
+        "response": [],
+        "aliases": [
+            "command1",
+            "command2"
+        ],
+        "duplicationResponse": []
     }
 };
 ```
 There is no set limit for command groups, nor the aliases you can have in this system but it is recommended to keep their numbers low for convenience.
 
-If you don't want your bot to respond to any of the commands a cathegory has, leave `response` empty, otherwise you can set a response text here and everytime someone uses any of the aliases, the bot is going to respond with that text after naming the viewer.
+If you don't want your bot to respond to any of the commands a cathegory has, leave `response` empty, otherwise you can set a response text here and everytime someone uses any of the aliases, the bot is going to respond with a text chosen from the list randomly.
+If you want to, you can also include the viewer's name in the response using `%user`:
+```js
+window.commands = {
+    "example command": {
+        "response": [
+            "This is a random response.",
+            "This is a random response with including your name, %user"
+        ],
+        "aliases": [
+            "command1",
+            "command2"
+        ],
+        "duplicationResponse": [
+            "%user this question was already submitted.",
+            "%user we've seen this question already."
+        ]
+    }
+}
+```
+
+It is also possible to set up responses if the submitted question was already registered or there are similar ones.
 
 > [!IMPORTANT]
 > You need at least 1 alias for each command group for it to work.
