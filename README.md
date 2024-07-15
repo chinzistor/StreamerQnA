@@ -1,4 +1,4 @@
-# AskTheStreamer
+# StreamerQnA
 Locally hosted alternative to [Featured.chat](https://featured.chat/) to have your Twitch viewers' questions showed on your stream.
 This system lets you show viewers' submitted questions on your stream one by one.
 
