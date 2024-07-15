@@ -5,6 +5,9 @@
 > [!TIP]
 > To reload the dock you simply need to right click into the dock then click refresh.
 > To reload the browser source, simply select the source and click the dedicated button for refreshing it.
+
+> [!NOTE]
+> You can use any text editor to edit the configuration files.
 ## Important configuration
 ### Bot settings
 Open `/config/bot.js` and edit the settings.
@@ -56,7 +59,12 @@ window.commands = {
         "duplicationResponse": [
             "%user this question was already submitted.",
             "%user we've seen this question already."
-        ]
+        ],
+        "discord": {
+            "enabled": false,
+            "webhookUrl": "",
+            "color": "#00FFFF"
+        }
     },
     "requests": {
         "response": [
@@ -68,7 +76,12 @@ window.commands = {
         ],
         "duplicationResponse": [
             "%user this request is already submitted."
-        ]
+        ],
+        "discord": {
+            "enabled": false,
+            "webhookUrl": "",
+            "color": "#00FFFF"
+        }
     },
     "compliments": {
         "response": [
@@ -80,7 +93,12 @@ window.commands = {
         ],
         "duplicationResponse": [
             "%user yes, we know, someone already said that."
-        ]
+        ],
+        "discord": {
+            "enabled": false,
+            "webhookUrl": "",
+            "color": "#00FFFF"
+        }
     }
 };
 ```
@@ -141,6 +159,41 @@ It is also possible to set up responses if the submitted question was already re
 
 > [!TIP]
 > It is easy to forget about brackets and commands, but you can always use an online JSON formatter tool to verify your settings. If you do so, don't copy the `window.commands = ` part.
+
+
+You can also send the incoming submissions to your Discord server based on webhooks.
+```js
+        "discord": {
+            "enabled": false,
+            "webhookUrl": "",
+            "color": "#00FFFF"
+        }
+```
+- `enable` if set to true, enables sending messages to a Discord webhook link.
+- `webhookUrl` is for the webhook's URL you want to use.
+- `color` sets the color of the embed that is sent to Discord.
+
+> [!NOTE]
+> By entering the same URLs to each command groups you can make the system to send all messages into one Discord channel.
+> But if you want to send each queues to different Discord channels, you can.
+
+> [!WARNING]
+> Do not share Discord webhook URLs
+
+### How to set up a Discord webhook
+Go to your Discord server, select or create a text channel you want to use for such messages.
+
+Click on the Edit icon next to the channels name.
+
+![Screenshopt of a Discord text channel](/screenshots/discordChannel.png)
+
+Go to `Integrations` and click on `Create Webhook`.
+
+![Screenshot of the Integration settings of a Discord text channel](/screenshots/integrations.png)
+
+Click on the little arrow pointing downwards, click on `Copy Webhook URL`, then paste it into the configuration file.
+
+![Screenshot of the webhook settings in Discord](/screenshots/webhookSettings.png)
 
 ## Design configuration
 For clarification:
