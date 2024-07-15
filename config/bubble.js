@@ -10,15 +10,35 @@ window.bubbleStyle = {
             "backgroundTransparency": 0.5,
             "font": "sans serif",
             "border": {
-                "thickness": 2,
-                "style": "solid",
-                "color": "#00FFFF",
-                "transparency": 1,
+                "top": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
+                "bottom": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
+                "left": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
+                "right": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
                 "rounding": {
-                    "topLeft": 0,
-                    "topRight": 0,
-                    "bottomLeft": 0,
-                    "bottomRight": 0
+                    "topLeft": 10,
+                    "topRight": 10,
+                    "bottomLeft": 10,
+                    "bottomRight": 10
                 }
             }
         },
@@ -33,15 +53,35 @@ window.bubbleStyle = {
             "font": "sans serif",
             "format": "%h:%m:%s",
             "border": {
-                "thickness": 2,
-                "style": "solid",
-                "color": "#00FFFF",
-                "transparency": 1,
+                "top": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
+                "bottom": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
+                "left": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
+                "right": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
                 "rounding": {
-                    "topLeft": 0,
-                    "topRight": 0,
-                    "bottomLeft": 0,
-                    "bottomRight": 0
+                    "topLeft": 10,
+                    "topRight": 10,
+                    "bottomLeft": 10,
+                    "bottomRight": 10
                 }
             }
         },
@@ -55,15 +95,35 @@ window.bubbleStyle = {
             "backgroundTransparency": 1,
             "font": "sans serif",
             "border": {
-                "thickness": 2,
-                "style": "solid",
-                "color": "#00FFFF",
-                "transparency": 1,
+                "top": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
+                "bottom": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
+                "left": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
+                "right": {
+                    "style": "solid",
+                    "color": "#00FFFF",
+                    "thickness": 2,
+                    "transparency": 1
+                },
                 "rounding": {
-                    "topLeft": 0,
-                    "topRight": 0,
-                    "bottomLeft": 0,
-                    "bottomRight": 0
+                    "topLeft": 10,
+                    "topRight": 10,
+                    "bottomLeft": 10,
+                    "bottomRight": 10
                 }
             }
         }
@@ -71,17 +131,37 @@ window.bubbleStyle = {
     "tablestyle": {
         "transparency": 1,
         "border": {
+            "top": {
+                "style": "solid",
+                "color": "#00FFFF",
+                "thickness": 2,
+                "transparency": 1
+            },
+            "bottom": {
+                "style": "solid",
+                "color": "#00FFFF",
+                "thickness": 2,
+                "transparency": 1
+            },
+            "left": {
+                "style": "solid",
+                "color": "#00FFFF",
+                "thickness": 2,
+                "transparency": 1
+            },
+            "right": {
+                "style": "solid",
+                "color": "#00FFFF",
+                "thickness": 2,
+                "transparency": 1
+            },
+            "spacing": 0,
             "rounding": {
-                "topLeft": 10,
+                "topLeft": 30,
                 "topRight": 10,
                 "bottomLeft": 10,
-                "bottomRight": 10
-            },
-            "thickness": 2,
-            "style": "solid",
-            "color": "#00FFFF",
-            "transparency": 1,
-            "spacing": 0
+                "bottomRight": 30
+            }
         }
     },
     "profile": {
