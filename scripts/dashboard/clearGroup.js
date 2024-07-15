@@ -9,6 +9,7 @@ function clearGroup(group) {
                 localStorage.setItem('bubbleData', '-none-');
             }
             // Removing the HTML element based on ID
+            //console.log(key);
             document.getElementById(key).remove();
             // Listing all questions that need to be removed from the localStorage
             list.push(key);
