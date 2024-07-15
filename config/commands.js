@@ -1,25 +1,39 @@
 window.commands = {
     "questions": {
-        "response": "your question has been saved.",
+        "response": [
+            "%user your question has been saved.",
+            "Your question will be soon answered, %user"
+        ],
         "aliases": [
             "question"
         ],
-        "duplicationResponse": "this question was already submitted."
+        "duplicationResponse": [
+            "%user this question was already submitted.",
+            "%user we've seen this question already."
+        ]
     },
     "requests": {
-        "response": "your request has been stored.",
+        "response": [
+            "%user your request has been stored."
+        ],
         "aliases": [
             "request",
             "req"
         ],
-        "duplicationResponse": "this request is already submitted."
+        "duplicationResponse": [
+            "%user this request is already submitted."
+        ]
     },
     "compliments": {
-        "response": "we've recieved your compliment.",
+        "response": [
+            "%user we've recieved your compliment."
+        ],
         "aliases": [
             "compliment",
             "comp"
         ],
-        "duplicationResponse": "yes, we know, someone already said that."
+        "duplicationResponse": [
+            "%user yes, we know, someone already said that."
+        ]
     }
 };
