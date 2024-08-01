@@ -21,7 +21,6 @@ window.allowRQ = false; // repeated question
 window.allowSQFDU = false; // same question from different users
 window.allowSQ = false; // similar questions
 window.checkGroup = true;
-window.duplicationResponse = "this question was already submitted.";
 window.similaritySensitivity = 0.5;
 ```
 `window.botUsername` Enter the username of your account you use for streaming.
