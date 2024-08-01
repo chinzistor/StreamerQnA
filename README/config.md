@@ -23,7 +23,7 @@ window.allowSQ = false; // similar questions
 window.checkGroup = true;
 window.similaritySensitivity = 0.5;
 ```
-`window.botUsername` Enter the username of your account you use for streaming.
+`window.username` Enter the username of your account you use for streaming.
 
 `window.oauthToken` Enter your oAuth token you can generate at [Twitch Chat OAuth Password Generator](https://twitchapps.com/tmi/).
 > [!IMPORTANT]
