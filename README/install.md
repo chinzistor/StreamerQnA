@@ -12,7 +12,7 @@ For the URL type in the address of the `dashboard.html` file with `file://` in f
 Example URLs
 - Linux: `file:///home/user/Desktop/StreamerQnA/dashboard.html`
 - Windows: `file:///C:/Users/user/Desktop/StreamerQnA/dashboard.html`
-- macOS: `file://Users/user/Desktop/dashboard.html`
+- macOS: `file:///Users/user/Desktop/dashboard.html`
 > [!TIP]
 > Make sure to replace `user` with your username.
 
