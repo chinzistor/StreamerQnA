@@ -57,7 +57,10 @@ function showBubble(id, groupOriginal) {
                         tableElement.style.borderTopRightRadius = `${Math.max(window.dashboardStyle.queue.unselected[textIds[a]].border.rounding.topRight, window.dashboardStyle.queue.unselected.border.rounding.topRight)}px`;
                         tableElement.style.borderBottomLeftRadius = `${window.dashboardStyle.queue.unselected[textIds[a]].border.rounding.bottomLeft}px`;
                         tableElement.style.borderBottomRightRadius = `${window.dashboardStyle.queue.unselected[textIds[a]].border.rounding.bottomRight}px`;
-                        tableElement.style.width = `${document.getElementById(`time${group}${id}`).textContent.length * window.dashboardStyle.queue.unselected.time.size * 0.75 + Math.max(window.bubbleStyle.tablestyle.border.rounding.topRight, window.dashboardStyle.queue.unselected.time.border.rounding.topRight)}px`;
+                        let tempElement = document.getElementById(`time${group}${id}`);
+                        if (tempElement) {
+                            tableElement.style.width = `${tempElement.textContent.length * window.dashboardStyle.queue.unselected.time.size * 0.85 + Math.max(window.bubbleStyle.tablestyle.border.rounding.topRight, window.dashboardStyle.queue.unselected.time.border.rounding.topRight)}px`;
+                        }
                     }
                     if (textIds[a] == 'question') {
                         tableElement.style.borderTopLeftRadius = `${window.dashboardStyle.queue.unselected[textIds[a]].border.rounding.topLeft}px`;
