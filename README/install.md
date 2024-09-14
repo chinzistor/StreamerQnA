@@ -6,7 +6,7 @@ Download the [latest version](https://github.com/chinzistor/StreamerQnA/releases
 ### Dashboard
 Open OBS Studio and go to Docks -> Custom Browser Docks...
 
-In that window for the `Dock Name` type in something. Recommendation: `StreamerQnA Dashboard`
+In that window for the `Dock Name` type in something. Recommendation: `StreamerQnA Dashboard`, but you can name it whatever you'd like.
 For the URL type in the address of the `dashboard.html` file with `file://` in front.
 
 Example URLs
@@ -16,6 +16,9 @@ Example URLs
 > [!TIP]
 > Make sure to replace `user` with your username.
 
+> [!TIP]
+> If you don't know how to get this URL, right click on `dashboard.html` and open it in browser. Within your browser, copy the URL (where the websites' address is shown).
+
 Click `Apply`.
 
 ![Screenshot of the custom dockers window](/screenshots/docker.png)
@@ -23,7 +26,7 @@ Click `Apply`.
 Position and resize the docker to your liking.
 
 ### Source
-Go to your `Sources`, click the `+` icon, select `Browser`, give a name to your source (recommendation: `StreamerQnA bubble`), make sure the `Make source visible` is selected and click `Ok`.
+Go to your `Sources`, click the `+` icon, select `Browser`, give a name to your source (recommendation: `StreamerQnA bubble`, but you can name it whatever you'd like), make sure the `Make source visible` is selected and click `Ok`.
 
 ![Screenshot of the add new browser source window](/screenshots/newBrowser.png)
 
