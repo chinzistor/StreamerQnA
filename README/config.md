@@ -51,6 +51,12 @@ Next to `Responses` you can set up with what the bot should respond with if the 
 If you want to use the viewer's name in the response, use `%user`.
 By leaving this part empty, you'll disable all responses.
 
+If you'd like to remove a command, click the `Remove command` button next to the group's name.
+
+If you'd like to add a new command, on the bottom of the page you'll find an `Add new command` button, click that.
+
+Once you're done editing all your commands, click `Refresh commands` on the bottom of the page.
+
 ### Discord integration
 You can turn on Discord integration, here you'll see two options.
 Next to `Discord webhook` you should enter the webhook link you want to send the submissions to.
