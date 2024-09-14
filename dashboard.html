@@ -3,21 +3,55 @@
     <head>
         <meta charset="UTF-8">
         <title>StreamerQnA dashboard</title>
-        <!-- Twitch bot communication and browser/docker source editing scripts -->
+        <!-- Twitch bot communication and browser source/dock editing scripts -->
         <script src="scripts/checkUpdate.js"></script>
-        <script src="scripts/dashboard/addQuestion.js"></script>
-        <script src="scripts/dashboard/clearGroup.js"></script>
-        <script src="scripts/dashboard/checkStringSimilarities.js"></script>
-        <script src="scripts/dashboard/createGroups.js"></script>
-        <script src="scripts/dashboard/core.js"></script>
-        <script src="scripts/dashboard/deleteMessage.js"></script>
-        <script src="scripts/dashboard/discordWebhook.js"></script>
-        <script src="scripts/dashboard/handleCommands.js"></script>
-        <script src="scripts/dashboard/hideBubble.js"></script>
-        <script src="scripts/dashboard/readData.js"></script>
-        <script src="scripts/dashboard/showBubble.js"></script>
-        <script src="scripts/dashboard/switchGroup.js"></script>
         <script src="scripts/getTime.js"></script>
+        <script src="scripts/styleButton.js"></script>
+        <script src="scripts/styling.js"></script>
+        <script src="scripts/transferData.js"></script>
+
+        <script src="scripts/bots/refreshConnection.js"></script>
+        <script src="scripts/bots/twitch.js"></script>
+
+
+        <script src="scripts/dashboard/configStyle.js"></script>
+        <script src="scripts/dashboard/core.js"></script>
+        <script src="scripts/dashboard/switchConfigPage.js"></script>
+
+        <script src="scripts/dashboard/config/fillCodes.js"></script>
+        <script src="scripts/dashboard/config/fillStats.js"></script>
+        <script src="scripts/dashboard/config/switchPage.js"></script>
+
+        <script src="scripts/dashboard/config/bots/saveData.js"></script>
+        <script src="scripts/dashboard/config/bots/spamFilter.js"></script>
+        <script src="scripts/dashboard/config/bots/toggleSite.js"></script>
+
+        <script src="scripts/dashboard/config/commands/addCommand.js"></script>
+        <script src="scripts/dashboard/config/commands/createCommands.js"></script>
+        <script src="scripts/dashboard/config/commands/discordWebhook.js"></script>
+        <script src="scripts/dashboard/config/commands/removeCommand.js"></script>
+        <script src="scripts/dashboard/config/commands/saveCommands.js"></script>
+        <script src="scripts/dashboard/config/commands/switchDiscord.js"></script>
+
+        <script src="scripts/dashboard/config/style/dashboardTableBorder.js"></script>
+        <script src="scripts/dashboard/config/style/showAnimationSettings.js"></script>
+        <script src="scripts/dashboard/config/style/styleEditorCreator.js"></script>
+        <script src="scripts/dashboard/config/style/styleSelector.js"></script>
+        <script src="scripts/dashboard/config/style/styleUpdate.js"></script>
+        <script src="scripts/dashboard/config/style/updateTableStyle.js"></script>
+
+
+        <script src="scripts/dashboard/queue/addQuestion.js"></script>
+        <script src="scripts/dashboard/queue/checkStringSimilarities.js"></script>
+        <script src="scripts/dashboard/queue/clearGroup.js"></script>
+        <script src="scripts/dashboard/queue/createGroups.js"></script>
+        <script src="scripts/dashboard/queue/deleteMessage.js"></script>
+        <script src="scripts/dashboard/queue/handleCommands.js"></script>
+        <script src="scripts/dashboard/queue/hideBubble.js"></script>
+        <script src="scripts/dashboard/queue/readData.js"></script>
+        <script src="scripts/dashboard/queue/showBubble.js"></script>
+        <script src="scripts/dashboard/queue/styleSubmission.js"></script>
+        <script src="scripts/dashboard/queue/switchGroup.js"></script>
 
         <!-- config files -->
         <script src="config/bot.js"></script>
@@ -26,40 +60,647 @@
         <script src="config/dashboard.js"></script>
     </head>
 
-    <body>
-        <div style="overflow:hidden; text-align:center;" id="groups">
-            <table style="width:100%;" id="buttonsTable">
-                <tbody>
-                    <tr id="cathegoryButtons">
-                        <!-- Buttons will be displayed here -->
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div style="overflow:hidden; text-align:center; display:flex; justify-content:center;" id="groupActions">
-            <table style="width:60%;" id="groupActionsTable">
+    <body style="overflow: hidden;">
+        <!-- Transfering old configuration data to the new system -->
+        <script>
+            transferData();
+        </script>
+
+        <!-- Main page selection -->
+        <div style="overflow: hidden; text-align: center;" id="configButtonsRow">
+            <table style="width: 100%;" id="configButtonsTable">
                 <tbody>
                     <tr>
-                        <td id="groupActionButton" style="cursor: pointer;">
-                            <p id="groupActionText">Clear group queue</p>
+                        <td id="queueConfigCell" style="width: 33.33%; cursor: pointer;" onclick="switchPage('queue');">
+                            <p id="queueConfigText">Queue</p>
+                        </td>
+                        <td id="configConfigCell" style="width: 33.33%; cursor: pointer;" onclick="switchPage('config');">
+                            <p id="configConfigText">Configuration</p>
+                        </td>
+                        <td id="statsConfigCell" style="width: 33.33%; cursor: pointer;" onclick="switchPage('stats');">
+                            <p id="statsConfigText">Statistics</p>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
+
+        <!-- Update notiffication -->
         <div>
-            <p id="latestRelease" style="display:none;">There's a new release of StreamerQnA: <a id="updateLink" href=""></a></p>
-            <p id="currentVersion" style="display: none;"></p>
+            <p class="dashboardText" id="latestRelease" style="display: none;">There's a new release of StreamerQnA: <a id="updateLink" href=""></a></p>
+            <p class="dashboardText" id="currentVersion" style="display: none;"></p>
+            <script>
+                checkUpdate();
+            </script>
         </div>
-        <div id="questionTableBody" style="width:100%; height:100%; overflow-y:auto;">
+
+        <!-- Command group selection -->
+        <div style="overflow-y: auto; text-align: center;" id="groups">
+            <table style="width: 100%;" id="buttonsTable">
+                <tbody id="cathegoryButtons">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Clear group -->
+        <div style="overflow: hidden; text-align: center; display: flex; justify-content: center;" id="groupActions">
+            <table style="width:60%;" id="groupActionsTable">
+                <tbody>
+                    <tr>
+                        <td id="clearQueueConfigCell" style="cursor: pointer;">
+                            <p id="clearQueueConfigText">Clear group queue</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Command groups -->
+        <div id="questionTableBody" style="width: 100%; height: 100%; overflow-y:auto;">
             <!-- Data will be displayed here -->
         </div>
-        <script type="text/javascript">
-            //localStorage.clear()
-            //console.log(localStorage.getItem('bubbleData'));
-            connectWebSocket();
+
+
+
+        <!-- Configuration -->
+        <div id="configPage" style="overflow-y: auto; overflow-x: hidden;">
+            <!-- Config page selection -->
+            <table style="width: 100%; overflow: hidden; text-align: center; border-collapse: separate;" id="configPageTable">
+                <tbody>
+                    <tr>
+                        <td id="botConfigCell" style="width: 33.33%; cursor: pointer;" onclick="switchConfigPage('bot');">
+                            <p id="botConfigText">Bot</p>
+                        </td>
+                        <td id="commandsConfigCell" style="width: 33.33%; cursor: pointer;" onclick="switchConfigPage('commands');">
+                            <p id="commandsConfigText">Commands</p>
+                        </td>
+                        <td id="styleConfigCell" style="width: 33.33%; cursor: pointer;" onclick="switchConfigPage('style');">
+                            <p id="styleConfigText">Style</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Bot settings -->
+            <div id="botConfigPage">
+                <!-- Twitch toggle -->
+                <h2 id="connectionHeader" style="text-align: center;">Bot connection configuration</h2>
+                <table style="width: 100%;">
+                    <tbody>
+                        <tr>
+                            <td class="canvasCells" title="Toggle Twitch chat bot functions">
+                                <canvas id="twitchCheckboxCanvas" onclick="toggleSite('twitch');" style="cursor: pointer;"></canvas>
+                            </td>
+                            <td style="width: 49%;">
+                                <p class="dashboardText">Twitch</p>
+                            </td>
+                            <td id="twitchRefreshConfigCell" style="width: 49%; text-align: center; cursor: pointer;" onclick="saveData('Twitch');" title="Reload Twitch connection. If you change something (name, OAuth, or toggle the state of the bot) you'll need to click on this button to save the changes.">
+                                <p id="twitchRefreshConfigText">Refresh Twitch</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Twitch config -->
+                <table id="twitchConfigTable" style="width: 100%;">
+                    <tbody>
+                        <tr>
+                            <td class="tableSpacerLeft"></td>
+                            <td class="tableHalf">
+                                <p class="dashboardText">Twitch username <span style="cursor: pointer;" title="Your Twitch username.">🛈</span></p>
+                            </td>
+                            <td class="tableHalf">
+                                <input type="text" id="TwitchUserName" name="TwitchUserName" style="width: 100%;">
+                            </td>
+                            <td class="tableSpacerRight"></td>
+                        </tr>
+                        <tr>
+                            <td class="tableSpacerLeft"></td>
+                            <td class="tableHalf">
+                                <p class="dashboardText">OAuth token <span style="cursor: pointer;" title="The OAuth token you get at the provided link.">🛈</span></p>
+                            </td>
+                            <td class="tableHalf">
+                                <input type="password" id="TwitchOAuth" name="TwitchOAuth" style="width: 100%;">
+                            </td>
+                            <td class="tableSpacerRight"></td>
+                        </tr>
+                        <tr>
+                            <td class="tableSpacerLeft"></td>
+                            <td class="tableHalf">
+                                <p class="dashboardText">Timeout <span style="cursor: pointer;" title="If the bot disconnects, the system will try to reconnect after this many milliseconds.">🛈</span></p>
+                            </td>
+                            <td class="tableHalf">
+                                <input type="number" id="TwitchTimeOut" name="TwitchTimeOut" style="width: 100%;">
+                            </td>
+                            <td class="tableSpacerRight"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <!-- Message filter toggle -->
+                <h2 id="spamFilterHeader" style="text-align: center;">Spam filter configuration</h2>
+                <!-- Spam filter toggle -->
+                <table style="width: 100%;">
+                    <tbody>
+                        <tr>
+                            <td class="canvasCells" title="Toggle chat filtering">
+                                <canvas id="spamCheckboxCanvas" onclick="toggleSpamFilter('');" style="cursor: pointer;"></canvas>
+                            </td>
+                            <td style="width: 98%;">
+                                <p class="dashboardText">Spam filtering <span title="Turn on or off the spam protection built into the system." style="cursor: pointer;">🛈</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Spam filter configuration -->
+                <table id="spamConfigTable" style="width: 100%;">
+                    <tbody>
+                        <tr>
+                            <td class="tableSpacerLeft"></td>
+                            <td class="canvasCells" title="Toggle group checks">
+                                <canvas id="spamCheckGroupsCanvas" onclick="toggleSpamGroupCheck('');" style="cursor: pointer;"></canvas>
+                            </td>
+                            <td style="width: 98%;">
+                                <p class="dashboardText">Check other groups for filtering <span title="Turn on if you want check all groups or just the current one for questions that are similar or the same as the submitted one." style="cursor: pointer;">🛈</span></p>
+                            </td>
+                            <td class="tableSpacerRight"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tableSpacerLeft"></td>
+                            <td class="canvasCells" title="Toggle other user checks">
+                                <canvas id="spamCheckUsersCanvas" onclick="toggleSpamOtherUsers('');" style="cursor: pointer;"></canvas>
+                            </td>
+                            <td style="width: 98%;">
+                                <p class="dashboardText">Check other viewers' submissions <span title="Turn on if you want to prevent questions being spammed by the same viewer or all viewers." style="cursor: pointer;">🛈</span></p>
+                            </td>
+                            <td class="tableSpacerRight"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tableSpacerLeft"></td>
+                            <td class="tableSingle" colspan="2">
+                                <p class="dashboardText">Similarity check sensitivity: <span id="sensitivityValue">50</span>% <span title="Set the sensitivity of the similarity checking.
+100% means the submitted question will be rejected if there's already one registered that is completely identical.
+0% means if there's a question registered, no other questions can be submitted.
+50% value is considered an optimal value, as it won't let through questions that are kinda similar to already registered ones, but still has some room for variations." style="cursor: pointer;">🛈</span></p>
+                            </td>
+                            <td class="tableSpacerRight"></td>
+                        </tr>
+                        <tr>
+                            <td class="tableSpacerLeft"></td>
+                            <td class="tableSingle" style="text-align: center;" colspan="2">
+                                <input id="spamSensitivityBar" type="range" name="spamSensitivityBar" min="0" max="1000" style="width: 90%;">
+                                <script>
+                                    const sensitivityBar = document.getElementById('spamSensitivityBar');
+                                    sensitivityBar.addEventListener('change', function() {
+                                        localStorage.setItem('similaritySensitivity', sensitivityBar.value / 1000);
+                                    });
+
+                                    const sensitivityText = document.getElementById('sensitivityValue');
+                                    sensitivityBar.addEventListener('input', function() {
+                                        sensitivityText.textContent = Math.round(sensitivityBar.value / 10);
+                                    });
+                                </script>
+                            </td>
+                            <td class="tableSpacerRight"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!-- Command settings -->
+            <div id="commandsConfigPage">
+                <h2 id="commandsHeader" style="text-align: center;">Chat commands configuration</h2>
+                <!-- New command area -->
+                <div id="commandsConfigCommands" style="width: 98%; overflow-y: scroll;">
+                    <!-- New commands will show up here-->
+                    <script>
+                        createCommands();
+                    </script>
+                </div>
+                <!-- Add and refresh commands -->
+                <table style="width: 100%; height: 100%; overflow-y: hidden;">
+                    <tbody>
+                        <tr>
+                            <td id="commandsAddCommandConfigCell" style="width: 40%; cursor: pointer;" onclick="addCommand(true);">
+                                <p id="commandsAddCommandConfigText" style="text-align: center;">Add new command</p>
+                            </td>
+                            <td style="width: 20%;"></td>
+                            <td id="commandsRefreshConfigCell" style="width: 40%; cursor: pointer;" onclick="saveCommands();">
+                                <p id="commandsRefreshConfigText" style="text-align: center;">Refresh commands</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="styleConfigPage">
+                <h2 id="styleHeader" style="text-align: center;">Style configuration</h2>
+                <!-- Style editor selection -->
+                <!-- This is where the user can select which part of the system he/she wants to customize -->
+                <div id="styleSelectionEditor">
+                    <table id="styleConfigSelector" style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td class="tableSpacerLeft"></td>
+                                <td class="tableHalf">
+                                    <p class="dashboardText">Section to edit</p>
+                                </td>
+                                <td class="tableHalf">
+                                    <select id="styleSelectionInput">
+                                        <option value="Dashboard">Dashboard</option>
+                                        <option value="Buttons">Buttons</option>
+                                        <option value="Queue">Queue</option>
+                                        <option value="Bubble">Bubble</option>
+                                    </select>
+                                    <script>
+                                        const styleSelectInput = document.getElementById('styleSelectionInput');
+                                        styleSelectInput.addEventListener('change', function() {
+                                            styleSelector(styleSelectInput.value);
+                                        });
+                                    </script>
+                                </td>
+                                <td class="tableSpacerRight"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Dashboard configuration -->
+                    <div id="styleDashboardSettings" style="overflow-y: auto;">
+                        <!-- Dashboard background color -->
+                        <table style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 50%;">
+                                        <p class="dashboardText">Dashboard background</p>
+                                    </td>
+                                    <td style="width: 50;">
+                                        <input type="color" name="dashboardBackgroundColor" id="dashboardBackgroundColor" style="width: 90%">
+                                        <script>
+                                            const colorInput = document.getElementById('dashboardBackgroundColor');
+                                            colorInput.addEventListener('change', function() {
+                                                localStorage.setItem('dashboardBackgroundColor', colorInput.value);
+                                                document.body.style.backgroundColor = localStorage.getItem('dashboardBackgroundColor');
+
+                                                // Stats
+                                                localStorage.setItem(`dashboardStyleEdits`, +localStorage.getItem(`dashboardStyleEdits`) + 1);
+                                                fillStats();
+                                            });
+                                        </script>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Dashboard text configuration -->
+                        <table style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 33.33%;">
+                                        <label for="styleDashboardFontInput" class="dashboardText">Dashboard text font <span title="Type in the font style you want to use.
+If the font is not installed on your computer, then the system will default to the browser's default font style." style="cursor: pointer;">🛈</span></label>
+                                        <input type="text" name="styleDashboardFontInput" id="styleDashboardFontInput" style="width: 98%;">
+                                        <script>
+                                            const dashboardFontInput = document.getElementById('styleDashboardFontInput');
+                                            dashboardFontInput.addEventListener('input', function() {
+                                                if (dashboardFontInput.value == "") {
+                                                    localStorage.setItem('dashboardFont', 'sans serif');
+                                                }
+                                                else {
+                                                    localStorage.setItem('dashboardFont', `${dashboardFontInput.value}`);
+                                                }
+                                                styleUpdate();
+
+                                                // Stats
+                                                localStorage.setItem(`dashboardStyleEdits`, +localStorage.getItem(`dashboardStyleEdits`) + 1);
+                                                fillStats();
+                                            });
+                                        </script>
+                                    </td>
+                                    <td style="width: 33.33%;">
+                                        <label for="styleDashboardFontSizeInput" class="dashboardText">Dashboard text font size</label>
+                                        <input type="number" name="styleDashboardFontSizeInput" id="styleDashboardFontSizeInput" style="width: 98%;" min="0">
+                                        <script>
+                                            const dashboardSizeInput = document.getElementById('styleDashboardFontSizeInput');
+                                            dashboardSizeInput.addEventListener('input', function() {
+                                                localStorage.setItem('dashboardFontSize', dashboardSizeInput.value);
+                                                styleUpdate();
+
+                                                // Stats
+                                                localStorage.setItem(`dashboardStyleEdits`, +localStorage.getItem(`dashboardStyleEdits`) + 1);
+                                                fillStats();
+                                            });
+                                        </script>
+                                    </td>
+                                    <td style="width: 33.33%;">
+                                        <label for="styleDashboardFontColorInput" class="dashboardText">Dashboard text font color</label>
+                                        <input type="color" name="styleDashboardFontColorInput" id="styleDashboardFontColorInput" style="width: 98%;">
+                                        <script>
+                                            const dashboardColorInput = document.getElementById('styleDashboardFontColorInput');
+                                            dashboardColorInput.addEventListener('change', function() {
+                                                localStorage.setItem('dashboardColor', dashboardColorInput.value);
+                                                styleUpdate();
+
+                                                // Stats
+                                                localStorage.setItem(`dashboardStyleEdits`, +localStorage.getItem(`dashboardStyleEdits`) + 1);
+                                                fillStats();
+                                            });
+                                        </script>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <!-- Buttons configuration -->
+                    <div id="styleButtonsSettings" style="overflow-y: auto;">
+                        <!-- Button style choice -->
+                        <div>
+                            <label class="dashboardText" for="styleButtonChoice">Button style to edit</label>
+                            <select id="styleButtonChoice">
+                                <option value="unselected">Unselected</option>
+                                <option value="hover">Hover unselected</option>
+                                <option value="selected">Selected</option>
+                                <option value="hoverselected">Hover selected</option>
+                                <option value="alert">Alert</option>
+                            </select>
+                            <script>
+                                const buttonSelectInput = document.getElementById('styleButtonChoice');
+                                buttonSelectInput.addEventListener('change', function() {
+                                    localStorage.setItem('dashboardButtonSelected', buttonSelectInput.value);
+                                    updateTableStyle();
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div id="styleQueueSettings" style="overflow-y: auto;">
+                        <!-- Queue style choice -->
+                        <table style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 50%;">
+                                        <label class="dashboardText" for="styleQueueChoice">Queue style to edit</label>
+                                        <select id="styleQueueChoice">
+                                            <option value="unselected">Unselected</option>
+                                            <option value="hover">Hover unselected</option>
+                                            <option value="selected">Selected</option>
+                                            <option value="hoverselected">Hover selected</option>
+                                            <option value="new">New</option>
+                                        </select>
+                                        <script>
+                                            const queueSelectInput = document.getElementById('styleQueueChoice');
+                                            queueSelectInput.addEventListener('change', function() {
+                                                localStorage.setItem('dashboardQueueSelected', queueSelectInput.value);
+                                                updateTableStyle();
+                                            });
+                                        </script>
+                                    </td>
+                                    <td style="width: 50%;">
+                                        <label class="dashboardText" for="styleQueueSection">Queue section to edit</label>
+                                        <select id="styleQueueSection">
+                                            <option value="border">Border</option>
+                                            <option value="name">Name</option>
+                                            <option value="time">Time</option>
+                                            <option value="question">Message</option>
+                                        </select>
+                                        <script>
+                                            const queueSectionInput = document.getElementById('styleQueueSection');
+                                            queueSectionInput.addEventListener('change', function() {
+                                                localStorage.setItem('dashboardQueueSection', queueSectionInput.value);
+                                                updateTableStyle();
+                                            });
+                                        </script>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="styleBubbleSettings" style="overflow-y: auto;">
+                        <!-- Bubble style choice -->
+                        <div >
+                            <label class="dashboardText" for="styleBubbleSection">Bubble section to edit</label>
+                            <select id="styleBubbleSection">
+                                <option value="border">Border</option>
+                                <option value="name">Name</option>
+                                <option value="time">Time</option>
+                                <option value="question">Message</option>
+                            </select>
+                            <script>
+                                const bubbleSectionInput = document.getElementById('styleBubbleSection');
+                                bubbleSectionInput.addEventListener('change', function() {
+                                    localStorage.setItem('dashboardBubbleSection', bubbleSectionInput.value);
+                                    updateTableStyle();
+                                });
+                            </script>
+                        </div>
+                    </div>
+
+
+                    <!-- Hover animation selection -->
+                    <div id="styleTransition">
+                        <div>
+                            <label class="dashboardText" for="styleTransitionTimeInput">Transition time</label>
+                            <input type="number" name="styleTransitionTimeInput" id ="styleTransitionTimeInput" min="0">
+                            <label class="dashboardText" for="styleTransitionTimeInput">ms</label>
+                            <script>
+                                const buttonSetTransitionTime = document.getElementById('styleTransitionTimeInput');
+                                buttonSetTransitionTime.addEventListener('change', function() {
+                                    localStorage.setItem('dashboardButtonsHoverTime', buttonSetTransitionTime.value);
+                                });
+                            </script>
+                        </div>
+                        <div>
+                            <label class="dashboardText" for="styleTransitionTypeInput">Transition timing function</label>
+                            <select id ="styleTransitionTypeInput">
+                                <option value="linear">Linear</option>
+                                <option value="ease">Ease</option>
+                                <option value="ease-in">Ease in</option>
+                                <option value="ease-out">Ease out</option>
+                                <option value="ease-in-out">Ease in and out</option>
+                                <option value="step-start">Step start</option>
+                                <option value="step-end">Step end</option>
+                                <option value="steps">Steps</option>
+                                <option value="cubic-bezier">Cubic bezier</option>
+                            </select>
+                            <input type="number" name="styleTransitionCubicBezier0" id="styleTransitionCubicBezier0" min="0" max="1">
+                            <input type="number" name="styleTransitionCubicBezier1" id="styleTransitionCubicBezier1" min="-2" max="2">
+                            <input type="number" name="styleTransitionCubicBezier2" id="styleTransitionCubicBezier2" min="0" max="1">
+                            <input type="number" name="styleTransitionCubicBezier3" id="styleTransitionCubicBezier3" min="-2" max="2">
+                            <label class="dashboardText" for="styleTransitionSteps" id="styleTransitionStepsText">Steps</label>
+                            <input type="number" name="styleTransitionSteps" id="styleTransitionSteps" min="0">
+                            <select id="styleTransitionStepsSelect">
+                                <option value="start">Start</option>
+                                <option value="end">End</option>
+                            </select>
+                            <script>
+                                const buttonSelectTransition = document.getElementById('styleTransitionTypeInput');
+                                buttonSelectTransition.addEventListener('change', function() {
+                                    showAnimationSettings();
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <!-- Table style configuration -->
+                <label for="styleTable" class="dashboardText">Table customization</label>
+                <div id="styleTableDiv" style="overflow-y: auto; overflow-x: auto;">
+                    <table id="styleTable" style="width: 100%">
+                        <tbody id="styleTableBody">
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- Save and refresh styling -->
+                <table style="width: 100%;">
+                    <tbody>
+                        <tr>
+                            <td style="width: 20%;"></td>
+                            <td id="styleRefreshConfigCell" style="width: 60%; cursor: pointer;" onclick="location.reload();">
+                                <p id="styleRefreshConfigText" style="text-align: center;">Save and refresh</p>
+                            </td>
+                            <td style="width: 20%;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div id="statsPage" style="overflow-y: auto; overflow-x: hidden;">
+            <h2 id="statsSystemHeader" style="text-align: center;">System info</h2>
+            <table id="statsSystem" style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <td class="tableSpacerLeft"></td>
+                        <td class="tableHalf">
+                            <p class="dashboardText">Version number</p>
+                        </td>
+                        <td class="tableHalf">
+                            <p class="dashboardText" id="statsVersion"></p>
+                        </td>
+                        <td class="tableSpacerRight"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="statsCommandsHeader" style="text-align: center;">Command usage</h2>
+            <table id="statsCommandTotals" style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <td class="tableSpacerLeft"></td>
+                        <td class="tableHalf">
+                            <p class="dashboardText">Commands used</p>
+                        </td>
+                        <td class="tableHalf">
+                            <p class="dashboardText" id="statsTotalCommands"></p>
+                        </td>
+                        <td class="tableSpacerRight"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableSpacerLeft"></td>
+                        <td class="tableHalf">
+                            <p class="dashboardText">Spam rejections</p>
+                        </td>
+                        <td class="tableHalf">
+                            <p class="dashboardText" id="statsSpamFilter"></p>
+                        </td>
+                        <td class="tableSpacerRight"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="statsCommands" style="width: 100%;">
+                <tbody id="statsCommandsBody">
+                </tbody>
+            </table>
+
+            <h2 id="statsUsageHeader" style="text-align: center;">Dashboard usage</h2>
+            <table id="statsUsage" style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <td class="tableSpacerLeft"></td>
+                        <td class="tableHalf">
+                            <p class="dashboardText">Submissions shown</p>
+                        </td>
+                        <td class="tableHalf">
+                            <p class="dashboardText" id="statsShown"></p>
+                        </td>
+                        <td class="tableSpacerRight"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableSpacerLeft"></td>
+                        <td class="tableHalf">
+                            <p class="dashboardText">Submissions hidden</p>
+                        </td>
+                        <td class="tableHalf">
+                            <p class="dashboardText" id="statsHidden"></p>
+                        </td>
+                        <td class="tableSpacerRight"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableSpacerLeft"></td>
+                        <td class="tableHalf">
+                            <p class="dashboardText">Submissions deleted</p>
+                        </td>
+                        <td class="tableHalf">
+                            <p class="dashboardText" id="statsDeleted"></p>
+                        </td>
+                        <td class="tableSpacerRight"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableSpacerLeft"></td>
+                        <td class="tableHalf">
+                            <p class="dashboardText">Total style edits</p>
+                        </td>
+                        <td class="tableHalf">
+                            <p class="dashboardText" id="statsStyleEdits"></p>
+                        </td>
+                        <td class="tableSpacerRight"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="statsBotsHeader" style="text-align: center;">Bots info</h2>
+            <table id="statsBots" style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <td class="tableSpacerLeft"></td>
+                        <td class="tableHalf">
+                            <p class="dashboardText">Twitch messages sent</p>
+                        </td>
+                        <td class="tableHalf">
+                            <p class="dashboardText" id="statsTwitchMessage"></p>
+                        </td>
+                        <td class="tableSpacerRight"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableSpacerLeft"></td>
+                        <td class="tableHalf">
+                            <p class="dashboardText">Twitch connections</p>
+                        </td>
+                        <td class="tableHalf">
+                            <p class="dashboardText" id="statsTwitchConnection"></p>
+                        </td>
+                        <td class="tableSpacerRight"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <!-- Loading the system and the dashboard -->
+        <script>
+            core();
+            styleEditorCreator();
+            fillStats();
             createGroups();
-            checkUpdate();
+            configStyle();
         </script>
     </body>
 </html>
