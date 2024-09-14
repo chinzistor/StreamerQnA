@@ -11,7 +11,7 @@ window.dashboardStyle = {
             "italic": false,
             "bold": true,
             "font": "sans serif",
-            "size": 14,
+            "size": 10,
             "border": {
                 "top": {
                     "style": "solid",
@@ -51,7 +51,7 @@ window.dashboardStyle = {
             "italic": true,
             "bold": false,
             "font": "sans serif",
-            "size": 12,
+            "size": 10,
             "border": {
                 "top": {
                     "style": "solid",
@@ -97,7 +97,7 @@ window.dashboardStyle = {
                 "color": "#AAAA00",
                 "italic": false,
                 "bold": true,
-                "size": 15,
+                "size": 10,
                 "font": "sans serif",
                 "border": {
                     "top": {
@@ -134,7 +134,7 @@ window.dashboardStyle = {
                 "color": "#888800",
                 "italic": true,
                 "bold": false,
-                "size": 15,
+                "size": 10,
                 "font": "sans serif",
                 "border": {
                     "top": {
@@ -171,7 +171,7 @@ window.dashboardStyle = {
                 "color": "#AAAA00",
                 "italic": false,
                 "bold": false,
-                "size": 15,
+                "size": 10,
                 "font": "sans serif",
                 "border": {
                     "top": {
@@ -242,7 +242,7 @@ window.dashboardStyle = {
                 "color": "#00FFFF",
                 "italic": false,
                 "bold": true,
-                "size": 15,
+                "size": 10,
                 "font": "sans serif",
                 "border": {
                     "top": {
@@ -279,7 +279,7 @@ window.dashboardStyle = {
                 "color": "#00AAAA",
                 "italic": true,
                 "bold": false,
-                "size": 15,
+                "size": 10,
                 "font": "sans serif",
                 "border": {
                     "top": {
@@ -316,7 +316,7 @@ window.dashboardStyle = {
                 "color": "#00FFFF",
                 "italic": false,
                 "bold": false,
-                "size": 15,
+                "size": 10,
                 "font": "sans serif",
                 "border": {
                     "top": {
