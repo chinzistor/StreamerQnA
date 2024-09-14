@@ -7,7 +7,7 @@ window.bubbleStyle = {
             "bold": true,
             "size": 15,
             "transparency": 1,
-            "backgroundTransparency": 0.5,
+            "backgroundTransparency": 1,
             "font": "sans serif",
             "border": {
                 "top": {
