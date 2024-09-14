@@ -1,5 +1,5 @@
 // Getting the local time formatted based on formatting settings
-function getTime(time) {
+function getTime(time, page) {
     //let now = new Date();
     //console.log(now);
     const date = new Date(time);
@@ -12,7 +12,15 @@ function getTime(time) {
     const minutes = date.getMinutes().toString().padStart(2, '0');
     const seconds = date.getSeconds().toString().padStart(2, '0');
 
-    let format = window.bubbleStyle.texts.time.format;
+    let format;
+    switch(page) {
+        case 'bubble':
+            format = localStorage.getItem(`bubbletimeFormat`);
+            break;
+        case 'dashboard':
+            format = localStorage.getItem(`dashboardtimeFormat`);
+            break;
+    }
     format = format.replace('%y', years).replace('%M', months).replace('%d', days).replace('%h', hours24).replace('%H', hours12).replace('%m', minutes).replace('%s', seconds).replace('%p', period);
     return format;
 }
