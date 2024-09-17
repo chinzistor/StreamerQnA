@@ -100,10 +100,10 @@ function addQuestion(user, groupRaw, formattedTime, question, store, replaceId, 
         // Alerting the streamer that a new question was submitted
         if (store) {
             if (localStorage.getItem('openGroup') != groupRaw) {
-                styleButton(group, 'alert')
+                styleButton(group, 'alert', true)
             }
             if (localStorage.getItem('configPage') != 'queue') {
-                styleButton('queue', 'alert')
+                styleButton('queue', 'alert', true)
             }
         }
 
@@ -319,7 +319,7 @@ function addQuestion(user, groupRaw, formattedTime, question, store, replaceId, 
         window.id++;
     }
 
-    // If duplicated question was already sent
+    // If duplicated submission was already sent
     else {
         // If a response is set in bot.js
         if (localStorage.getItem(`commandDuplicationResponses${groupRaw}`) != "") {
@@ -339,7 +339,7 @@ function addQuestion(user, groupRaw, formattedTime, question, store, replaceId, 
     }
 
     // Responding to the command
-    if (response != "" && !duplicated) {
+    if (response != "" && duplicated == 0) {
         const responses = localStorage.getItem(`commandResponses${groupRaw}`).split('\n');
         const response = responses[Math.floor(Math.random() * responses.length)].replace('%user', user);
         // Handling webhook integration
