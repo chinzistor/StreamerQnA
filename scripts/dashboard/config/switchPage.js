@@ -7,9 +7,9 @@ function switchPage(page) {
             document.getElementById('configPage').style.display = 'none';
             document.getElementById('statsPage').style.display = 'none';
             localStorage.setItem('configPage', 'queue');
-            styleButton('queue', 'selected');
-            styleButton('config', 'unselected');
-            styleButton('stats', 'unselected');
+            styleButton('queue', 'selected', true);
+            styleButton('config', 'unselected', true);
+            styleButton('stats', 'unselected', true);
             break;
         case 'config':
             document.getElementById('groups').style.display = 'none';
@@ -18,9 +18,9 @@ function switchPage(page) {
             document.getElementById('configPage').style.display = '';
             document.getElementById('statsPage').style.display = 'none';
             localStorage.setItem('configPage', 'config');
-            styleButton('queue', 'unselected');
-            styleButton('config', 'selected');
-            styleButton('stats', 'unselected');
+            styleButton('queue', 'unselected', true);
+            styleButton('config', 'selected', true);
+            styleButton('stats', 'unselected', true);
             break;
         case 'stats':
             document.getElementById('groups').style.display = 'none';
@@ -29,9 +29,9 @@ function switchPage(page) {
             document.getElementById('configPage').style.display = 'none';
             document.getElementById('statsPage').style.display = '';
             localStorage.setItem('configPage', 'stats');
-            styleButton('queue', 'unselected');
-            styleButton('config', 'unselected');
-            styleButton('stats', 'selected');
+            styleButton('queue', 'unselected', true);
+            styleButton('config', 'unselected', true);
+            styleButton('stats', 'selected', true);
             break;
     }
 
