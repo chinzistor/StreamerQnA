@@ -1,7 +1,7 @@
 async function checkUpdate() {
     // Version of the system is saved here
     // I know it's dumb placement, but it was the simplest
-    window.version = '1.0.0';
+    window.version = '1.0.3';
 
     // Getting the latest version from GitHub
     const url = `https://api.github.com/repos/chinzistor/StreamerQnA/releases/latest`;
