@@ -19,7 +19,10 @@ function addCommand(userAdded) {
     styling(body, 'table', 'unselected');
     body.style.overflowX = 'hidden';
     body.id = `commandId${commandId}`;
-    body.style.width = `${main.offsetWidth - 2.5 * Math.min(localStorage.getItem(`dashboardButtonsunselectedBorderRoundingtopLeft`), localStorage.getItem(`dashboardButtonsunselectedBorderRoundingtopRight`), localStorage.getItem(`dashboardButtonsunselectedBorderRoundingbottomLeft`), localStorage.getItem(`dashboardButtonsunselectedBorderRoundingbottomRight`))}px`;
+    body.style.width = `${main.offsetWidth - 2.5 * Math.min(localStorage.getItem(`dashboardButtonsunselectedBorderRoundingtopLeft`),
+                                                            localStorage.getItem(`dashboardButtonsunselectedBorderRoundingtopRight`),
+                                                            localStorage.getItem(`dashboardButtonsunselectedBorderRoundingbottomLeft`),
+                                                            localStorage.getItem(`dashboardButtonsunselectedBorderRoundingbottomRight`))}px`;
 
     body.appendChild(document.createElement('br'));
 
@@ -36,7 +39,8 @@ function addCommand(userAdded) {
     const commandNameCell = document.createElement('td');
     tableHeader.appendChild(commandNameCell);
     commandNameCell.style.width = '60%';
-    commandNameCell.style.paddingLeft = `${Math.max(localStorage.getItem(`dashboardQueueunselectednameBorderRoundingtopLeft`) / 2, localStorage.getItem(`dashboardQueueunselectedBorderRoundingtopLeft`) * 1.5)}px`;
+    commandNameCell.style.paddingLeft = `${Math.max(localStorage.getItem(`dashboardQueueunselectednameBorderRoundingtopLeft`) / 2,
+                                                    localStorage.getItem(`dashboardQueueunselectedBorderRoundingtopLeft`) * 1.5)}px`;
 
     const commandName = document.createElement('input');
     commandNameCell.appendChild(commandName);
@@ -62,7 +66,7 @@ function addCommand(userAdded) {
     commandRemoveText.style.lineHeight = 0;
     commandRemoveText.style.textAlign = 'center';
     commandRemoveText.id = (`removeCommand${commandId}ConfigText`);
-    styleButton(`removeCommand${commandId}`, 'unselected');
+    styleButton(`removeCommand${commandId}`, 'unselected', true);
 
 
 
