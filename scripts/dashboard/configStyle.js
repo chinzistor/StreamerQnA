@@ -129,9 +129,9 @@ function configStyle() {
             document.getElementById('questionTableBody').style.display = '';
             document.getElementById('configPage').style.display = 'none';
             document.getElementById('statsPage').style.display = 'none';
-            styleButton('queue', 'selected');
-            styleButton('config', 'unselected');
-            styleButton('stats', 'unselected');
+            styleButton('queue', 'selected', true);
+            styleButton('config', 'unselected', true);
+            styleButton('stats', 'unselected', true);
             break;
         case 'config':
             document.getElementById('groups').style.display = 'none';
@@ -139,9 +139,9 @@ function configStyle() {
             document.getElementById('questionTableBody').style.display = 'none';
             document.getElementById('configPage').style.display = '';
             document.getElementById('statsPage').style.display = 'none';
-            styleButton('queue', 'unselected');
-            styleButton('config', 'selected');
-            styleButton('stats', 'unselected');
+            styleButton('queue', 'unselected', true);
+            styleButton('config', 'selected', true);
+            styleButton('stats', 'unselected', true);
             break;
         case 'stats':
             document.getElementById('groups').style.display = 'none';
@@ -149,11 +149,14 @@ function configStyle() {
             document.getElementById('questionTableBody').style.display = 'none';
             document.getElementById('configPage').style.display = 'none';
             document.getElementById('statsPage').style.display = '';
-            styleButton('queue', 'unselected');
-            styleButton('config', 'unselected');
-            styleButton('stats', 'selected');
+            styleButton('queue', 'unselected', true);
+            styleButton('config', 'unselected', true);
+            styleButton('stats', 'selected', true);
             break;
     }
+
+    // Styling the clear queue button
+    styleButton('clearQueue', 'selected', true);
 
     // Opening the last open config page
     if (localStorage.getItem('configActivePage') == null) {
@@ -164,18 +167,18 @@ function configStyle() {
     for (let a = 0; a < configPages.length; a++) {
         if (localStorage.getItem('configActivePage') == configPages[a]) {
             document.getElementById(`${configPages[a]}ConfigPage`).style.display = '';
-            styleButton(configPages[a], 'selected');
+            styleButton(configPages[a], 'selected', true);
         }
         else {
             document.getElementById(`${configPages[a]}ConfigPage`).style.display = 'none';
-            styleButton(configPages[a], 'unselected');
+            styleButton(configPages[a], 'unselected', true);
         }
     }
     // Styling the config page switching buttons
-    styleButton('twitchRefresh', 'unselected');
-    styleButton('commandsAddCommand', 'unselected');
-    styleButton('commandsRefresh', 'unselected');
-    styleButton('styleRefresh', 'unselected');
+    styleButton('twitchRefresh', 'unselected', true);
+    styleButton('commandsAddCommand', 'unselected', true);
+    styleButton('commandsRefresh', 'unselected', true);
+    styleButton('styleRefresh', 'unselected', true);
 
 
     // Styling the toggle switches
