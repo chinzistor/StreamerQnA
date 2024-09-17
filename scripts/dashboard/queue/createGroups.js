@@ -64,10 +64,10 @@ function createGroups() {
         // On (re)loading the last opened queue get selected
         let styleDict = '';
         if (lastOpenGroup == group) {
-            styleButton(group, 'selected');
+            styleButton(group, 'selected', true);
         }
         else {
-            styleButton(group, 'unselected');
+            styleButton(group, 'unselected', true);
         }
 
         groupButtons.style.height = `${buttonDiv.offsetHeight * multiRow}px`;
@@ -90,7 +90,7 @@ function createGroups() {
                 clearGroup(group);
             };
             // Styling the box
-            styleButton('clearQueue', 'selected');
+            styleButton('clearQueue', 'selected', true);
         }
 
         index = index + 1;
