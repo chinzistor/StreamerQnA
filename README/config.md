@@ -134,25 +134,25 @@ Here you'll see some different options.
     - you can choose when each transition should happen within the steps: at the start or at the end of each step.
   - `Cubic bezier` is a bit more complicated timing function. It needs 4 values and it creates a curve which the transition is going to happen by based on the time you set. With this type you can create interesting animations. To see how this function works, check [this link](https://cubic-bezier.com/)
 
-[!Linear transition](/screenshots/transitionLinear.gif)
+![Linear transition](/screenshots/transitionLinear.gif)
 
-[!Ease transition](/screenshots/transitionEase.gif)
+![Ease transition](/screenshots/transitionEase.gif)
 
-[!Ease in transition](/screenshots/transitionEaseIn.gif)
+![Ease in transition](/screenshots/transitionEaseIn.gif)
 
-[!Ease out transition](/screenshots/transitionEaseOut.gif)
+![Ease out transition](/screenshots/transitionEaseOut.gif)
 
-[!Ease in out transition](/screenshots/transitionEaseInOut.gif)
+![Ease in out transition](/screenshots/transitionEaseInOut.gif)
 
-[!Step start transition](/screenshots/transitionStart.gif)
+![Step start transition](/screenshots/transitionStart.gif)
 
-[!Step end transition](/screenshots/transitionEnd.gif)
+![Step end transition](/screenshots/transitionEnd.gif)
 
-[!Steps transition 11](/screenshots/transitionSteps10start.gif)
+![Steps transition 11](/screenshots/transitionSteps10start.gif)
 
-[!Steps transition 2](/screenshots/transitionSteps5end.gif)
+![Steps transition 2](/screenshots/transitionSteps5end.gif)
 
-[!Cubic bezier transition](/screenshots/transitionCubicBezier.gif)
+![Cubic bezier transition](/screenshots/transitionCubicBezier.gif)
 
 Within the table you'll see similar options as at the [dashboard styling](/README/config.md#dashboard-styling), but there are a few more options in the middle:
 - `Text font` will set the selected style's text font.
@@ -179,5 +179,8 @@ If you'd like to customize the format, here are the available placeholders:
 - `%p` is the perios (AM or PM)
 Of course you can put any text in here.
 
+For changes to take effect, click the `Save and refresh` button.
+
 ### Bubble styling
 Same goes over here as in [queue styling](/README/config.md#queue-styling) but there's only one style: what is going to show up on your stream.
+For changes to take effect with the bubble, refresh the browser source.
