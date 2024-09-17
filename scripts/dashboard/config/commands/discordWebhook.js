@@ -8,7 +8,7 @@ async function discordWebhook(user, time, question, group) {
     }
     // Checking if the command group's Discord integration is enabled
     if (localStorage.getItem(`discordWebhookActive${commandId}`) == 'true') {
-        const formattedTime = getTime(time);
+        const formattedTime = getTime(time, 'bubble');
 
         // Making the embed for the webhook message
         const payload = JSON.stringify({
