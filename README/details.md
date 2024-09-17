@@ -19,10 +19,12 @@ Example:
 - `applesauce` chopped up: `app` `ppl` `ple` `les` `esa` `sau` `auc` `uce`
 - `pinecakes` chopped up: `pan` `anc` `nca` `cak` `ake` `kes`
 - `pineapple` chopped up: `pin` `ine` `nea` `eap` `app` `ppl` `ple`
+
 Then the system will check how many of the first text's trigrams are in the second text's trigrams (intersection).
-- `applesauce` and `pinecakes`: 0
-- `applesauce` and `pineapple`: 3
-- `pinecakes` and `pineapple`: 2
+- `applesauce` and `pinecakes`: 0 trigrams are shared
+- `applesauce` and `pineapple`: 3 trigrams are shared
+- `pinecakes` and `pineapple`: 2 trigrams are shared
+
 The system then multiplies this value by 2, divides it by the sum of the sum of the two texts' length (the number of characters), then multiplies the whole value by the rate of the two texts' length.
 The math: `(2 * intersection / (text1's length + text2's length)) * the two texts' length relative to each other`
 This returns a value between 0 and 1 where 0 means the two texts are completely different and 1 means the two texts are identical.
