@@ -12,7 +12,7 @@ For the URL type in the address of the `dashboard.html` file with `file://` in f
 Example URLs
 - Linux: `file:///home/user/Desktop/StreamerQnA/dashboard.html`
 - Windows: `file:///C:/Users/user/Desktop/StreamerQnA/dashboard.html`
-- macOS: `file://Users/user/Desktop/dashboard.html`
+- macOS: `file:///Users/user/Desktop/dashboard.html`
 > [!TIP]
 > Make sure to replace `user` with your username.
 
@@ -23,7 +23,7 @@ Click `Apply`.
 
 ![Screenshot of the custom dockers window](/screenshots/docker.png)
 
-Position and resize the docker to your liking.
+Position and resize the dock to your liking.
 
 ### Source
 Go to your `Sources`, click the `+` icon, select `Browser`, give a name to your source (recommendation: `StreamerQnA bubble`, but you can name it whatever you'd like), make sure the `Make source visible` is selected and click `Ok`.
