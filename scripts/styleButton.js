@@ -1,4 +1,4 @@
-function styleButton(object, style) {
+function styleButton(object, style, update) {
     // Editting the selected button
     let cell = document.getElementById(`${object}ConfigCell`);
     cell.style.borderTop               = `${localStorage.getItem(`dashboardButtons${style}BordertopThickness`)}px `
@@ -19,26 +19,28 @@ function styleButton(object, style) {
     cell.style.borderTopRightRadius    = `${localStorage.getItem(`dashboardButtons${style}BorderRoundingtopRight`)}px`;
     cell.style.borderBottomLeftRadius  = `${localStorage.getItem(`dashboardButtons${style}BorderRoundingbottomLeft`)}px`;
     cell.style.borderBottomRightRadius = `${localStorage.getItem(`dashboardButtons${style}BorderRoundingbottomRight`)}px`;
-    switch(style) {
-        case 'selected':
-        case 'hoverselected':
-            cell.addEventListener('mouseenter', () => {
-                styleButton(object, 'hoverselected');
-            });
-            cell.addEventListener('mouseleave', () => {
-                styleButton(object, 'selected');
-            });
-            break;
-        case 'hover':
-        case 'alert':
-        case 'unselected':
-            cell.addEventListener('mouseenter', () => {
-                styleButton(object, 'hover');
-            });
-            cell.addEventListener('mouseleave', () => {
-                styleButton(object, 'unselected');
-            });
-            break;
+    if (update == true) {
+        switch(style) {
+            case 'selected':
+            case 'hoverselected':
+                cell.addEventListener('mouseenter', () => {
+                    styleButton(object, 'hoverselected', false);
+                });
+                cell.addEventListener('mouseleave', () => {
+                    styleButton(object, 'selected', false);
+                });
+                break;
+            case 'hover':
+            case 'alert':
+            case 'unselected':
+                cell.addEventListener('mouseenter', () => {
+                    styleButton(object, 'hover', false);
+                });
+                cell.addEventListener('mouseleave', () => {
+                    styleButton(object, 'unselected', false);
+                });
+                break;
+        }
     }
     cell.style.transition = `background-color ${localStorage.getItem(`dashboardButtonsHoverTime`) / 1000}s `
                           + `${localStorage.getItem(`dashboardButtonsHoverType`)}, `
