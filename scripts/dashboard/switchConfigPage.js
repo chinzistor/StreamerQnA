@@ -4,13 +4,13 @@ function switchConfigPage(name) {
         document.getElementById(`${groups[a]}ConfigPage`).style.display = 'none';
 
         // Editing the button
-        styleButton(groups[a], 'unselected');
+        styleButton(groups[a], 'unselected', true);
     }
 
     document.getElementById(`${name}ConfigPage`).style.display = '';
 
     // Editting the selected button
-    styleButton(name, 'selected');
+    styleButton(name, 'selected', true);
 
     localStorage.setItem('configActivePage', name);
 }
