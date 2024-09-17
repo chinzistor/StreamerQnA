@@ -20,6 +20,8 @@ function getTime(time, page) {
         case 'dashboard':
             format = localStorage.getItem(`dashboardtimeFormat`);
             break;
+        default:
+            format = '%h:%m:%s';
     }
     format = format.replace('%y', years).replace('%M', months).replace('%d', days).replace('%h', hours24).replace('%H', hours12).replace('%m', minutes).replace('%s', seconds).replace('%p', period);
     return format;
