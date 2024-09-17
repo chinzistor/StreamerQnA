@@ -88,7 +88,7 @@ function checkTwitchState() {
 function sendTwitchMessage(message) {
     //console.log(message);
     if (twitchSocket && twitchSocket.readyState === WebSocket.OPEN) {
-        twitchSocket.send(`PRIVMSG #${window.username} :${message}`);
+        twitchSocket.send(`PRIVMSG #${localStorage.getItem('connectionTwitchUserName')} :${message}`);
 
         // Stats
         localStorage.setItem(`botTwitchMessageSent`, +localStorage.getItem(`botTwitchMessageSent`) + 1);
