@@ -3,14 +3,14 @@ Things that users of the system came up with and I want to add.
 ## PastorDoostyn
 [Twitch](https://www.twitch.tv/pastordoostyn)
 ### Visual features
-[ ] option to make the texts in the bubble and in the dashboard all uppercase or all lowercase
-[ ] relative arrangement settings for the bubble (fixed on top, fixed on bottom, etc)
+- [ ] option to make the texts in the bubble and in the dashboard all uppercase or all lowercase
+- [ ] relative arrangement settings for the bubble (fixed on top, fixed on bottom, etc)
 
 ## XtianNinja
 [Twitch](https://www.twitch.tv/xtianninja)
 ### Visual features
-[ ] simplified configuration: short list of color choices for styles
-[ ] simplified configuration: short list of font choices for styles
+- [ ] simplified configuration: short list of color choices for styles
+- [ ] simplified configuration: short list of font choices for styles
 
 
 # Plans
