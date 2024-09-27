@@ -29,7 +29,7 @@ It will check several things:
 
 ## Similarity check
 
-There's another [system](/scripts/dashboard/queue/checkStringSimilarities.md) that compares the two texts to each other.
+There's another [system](/scripts/dashboard/queue/checkStringSimilarities.js) that compares the two texts to each other.
 
 First it takes the 2 texts and chop them up into little pieces containing 3 characters (trigrams).
 Example:
