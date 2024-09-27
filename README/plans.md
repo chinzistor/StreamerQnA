@@ -2,12 +2,16 @@
 Things that users of the system came up with and I want to implement.
 ## PastorDoostyn
 [Twitch](https://www.twitch.tv/pastordoostyn)
+[YouTube](https://www.youtube.com/c/PastorDoostyn)
+[X](https://x.com/PastorDoostyn)
 ### Visual features
 - [ ] option to make the texts in the bubble and in the dashboard all uppercase or all lowercase
 - [ ] relative arrangement settings for the bubble (fixed on top, fixed on bottom, etc)
 
 ## XtianNinja
 [Twitch](https://www.twitch.tv/xtianninja)
+[YouTube](https://www.youtube.com/@XtianNinjaYT)
+[X](https://x.com/XtianNinja)
 ### Visual features
 - [ ] simplified configuration: short list of color choices for styles
 - [ ] simplified configuration: short list of font choices for styles
