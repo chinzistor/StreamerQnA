@@ -8,8 +8,14 @@ For configuration read [config.md](/README/config.md). It explains every option 
 
 If you'd like to see what people have suggested for the system, check [plans.md](/README/plans.md).
 You can also check what features are going to be put into the system.
+If you want to suggest a new features, check if your idea is already in [plans.md](/README/plans.md) or in [discussions](https://github.com/chinzistor/StreamerQnA/discussions).
+If you haven't found your idea, [open a new discussion](https://github.com/chinzistor/StreamerQnA/discussions/new?category=ideas) and share your idea with great detail.
+You can also use [discussions](https://github.com/chinzistor/StreamerQnA/discussions) if you have any questions.
 
 For details on how the system works, check [details.md](/README/details.md)
+
+If you find any bugs or unexpected behavior, check [open issues](https://github.com/chinzistor/StreamerQnA/issues) if there is already a report on it.
+If you haven't found your issue, feel free to [open a ticket](https://github.com/chinzistor/StreamerQnA/issues/new).
 
 
 ## Features
