@@ -6,8 +6,10 @@ To install the system read [install.md](/README/install.md).
 
 For configuration read [config.md](/README/config.md). It explains every option with great detail.
 
-If you'd like to see what people have suggested for the system, check [suggestions.md](/README/suggestions.md).
+If you'd like to see what people have suggested for the system, check [plans.md](/README/plans.md).
 You can also check what features are going to be put into the system.
+
+For details on how the system works, check [details.md](/README/details.md)
 
 
 ## Features
