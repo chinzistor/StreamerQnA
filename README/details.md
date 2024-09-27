@@ -1,3 +1,20 @@
+# How the system works
+When you load the [dock](/dashboard.html) into OBS it is going to launch a Twitch chatbot based on the configuration you configured in the **Configuration/Bot** page within the dashboard.
+
+While the bot is being initiated, the dashboard is going to check what commands you set up in **Configuration/Commands** and it'll create groups accordingly under **Queue** with the needed buttons.
+The styling is based on what you configure in **Configuration/Style**.
+
+After the groups have been created, the bot is going to listen to the set commands and if any of those commands are used in the set channel, the system is going to show them in **Queue** under the corresponding group/tab.
+While showing these registered messages, the system is also going to store these messages within a so called localStorage (it's like cookies in your browser but can store a ton more data and doesn't have an expiration date).
+You'll also get 2 buttons for each message, one that says **Show** to show that message on stream and one that says **Delete** to remove the message from the queue.
+
+When you click the **Show** button, it is going to be replaced with text that says **Hide** and the message next to it is going to be tagged within that localStorage.
+If you click **Hide**, it'll switch back to **Show** and the message will be untagged.
+
+Once you load the browser source into OBS, it'll start frequently checking which message is tagged, and if it sees there's a tagged message, it'll show it on the stream in the style set under **Configuration/Style**.
+If it sees that there's no tagged message, it'll clear the bubble from all content making it invisible thus not disturbing.
+
+
 # How the spam filtering works
 
 The spam filter compares the new submission with the already saved ones by characters.
