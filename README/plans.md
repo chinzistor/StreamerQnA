@@ -1,5 +1,9 @@
 # Suggestions by users
 Things that users of the system came up with and I want to implement.
+
+If you'd like to see your suggestion here, [open a new discussion](https://github.com/chinzistor/StreamerQnA/discussions/new?category=ideas) and give a detailed explanation of what you'd like to see in the system.
+Also, you can send your ideas to me on Discord.
+
 ## PastorDoostyn
 [Twitch](https://www.twitch.tv/pastordoostyn)
 [YouTube](https://www.youtube.com/c/PastorDoostyn)
