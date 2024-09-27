@@ -1,5 +1,5 @@
 # Suggestions by users
-Things that users of the system came up with and I want to add.
+Things that users of the system came up with and I want to implement.
 ## PastorDoostyn
 [Twitch](https://www.twitch.tv/pastordoostyn)
 ### Visual features
@@ -14,7 +14,7 @@ Things that users of the system came up with and I want to add.
 
 
 # Plans
-Things that I came up with that I want to add.
+Things that I came up with that I want to implement.
 ### System features
 - add support for YouTube
 - add support for Kick
