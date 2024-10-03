@@ -54,6 +54,8 @@ Things that I came up with that I want to implement.
 
 - more stats
 
+- profiles to save and use multiple configurations for people who stream on multiple channels
+
 ### Visual features
 - add the logo of the streaming platform to the bubble and queue to indicate which submission came from which platform
 - support for custom SVGs to edit the style of the bubble and the dashboard
