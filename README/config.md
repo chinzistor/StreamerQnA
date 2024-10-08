@@ -3,7 +3,7 @@
 Go to **Configuration/Bot** tab within the dashboard.
 Make sure the Twitch button is on and the configuration table is open. By default it should be.
 Enter your `Twitch username`. Whatever name you enter here is which channel the bot is going to watch for incoming submissions.
-Enter your `OAuth token` you can generate at [Twitch Chat OAuth Password Generator](https://twitchapps.com/tmi/).
+Enter your `OAuth token` you can generate at [Twitch Chat OAuth Password Generator](https://twitchapps.com/tmi/). You **can and allowed to** use a secondary account here to send and detect messages through.
 Edit the `Timeout` to your needs. This will set how much time later (in milliseconds) the bot should retry reconnecting after disconnecting due to network issues. 1000 ms should be fine.
 
 ![Screenshot of bot configuration](/screenshots/botConfig.png)
@@ -12,7 +12,7 @@ Edit the `Timeout` to your needs. This will set how much time later (in millisec
 > Do not forget to include `oauth:` at the beginning!
 
 > [!WARNING]
-> Do not share your oAuth token!
+> Do not share your OAuth token!
 
 ## Spam filter configuration
 You can turn on `Spam filtering` by clicking the button next to it.
