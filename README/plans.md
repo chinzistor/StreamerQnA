@@ -32,6 +32,7 @@ Things that I came up with that I want to implement.
 - add support for Trovo
 - add support for Rumble
 - add support for Instagram
+- add support for Amazon
 
 - 2 modes of configuration:
   - simplified:
