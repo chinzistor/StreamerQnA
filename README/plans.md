@@ -34,6 +34,7 @@ Things that I came up with that I want to implement.
 - add support for Instagram
 - add support for Amazon
 
+
 - 2 modes of configuration:
   - simplified:
     - less configuration variables
@@ -45,15 +46,21 @@ Things that I came up with that I want to implement.
     - full on customization:
       - write your own code into the style
 
+
 - renewal of the Twitch connection to use the Twitch API instead of the IRC server
+
 
 - export configuration to a file in case you want to share or backup your settings
 - import configuration from files
 - complete removal of the old configuration system (still in the system to import the old data for easier update)
 
+
 - add multiple submissions to the bubble
 
+
 - more stats
+- more details in console
+
 
 - profiles to save and use multiple configurations for people who stream on multiple channels
 
