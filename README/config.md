@@ -176,7 +176,7 @@ If you'd like to customize the format, here are the available placeholders:
 - `%H` is hours in 12 hours format
 - `%m` is minutes
 - `%s` is seconds
-- `%p` is the perios (AM or PM)
+- `%p` is the period (AM or PM)
 Of course you can put any text in here.
 
 For changes to take effect, click the `Save and refresh` button.
