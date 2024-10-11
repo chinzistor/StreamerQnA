@@ -23,6 +23,7 @@ Also, you can send your ideas to me on Discord.
 # Plans
 Things that I came up with that I want to implement.
 ### System features
+
 Streaming platforms
 - add support for YouTube
 - add support for Kick
@@ -33,6 +34,7 @@ Streaming platforms
 - add support for Rumble
 - add support for Instagram
 - add support for Amazon
+
 Configuration
 - 2 modes of configuration:
   - simplified:
@@ -45,16 +47,20 @@ Configuration
     - full on customization:
       - write your own code into the style
 - profiles to save and use multiple configurations for people who stream on multiple channels
+
 Connection
 - renewal of the Twitch connection to use the Twitch API instead of the IRC server
+
 Storage
 - export configuration to a file in case you want to share or backup your settings
 - import configuration from files
 - complete removal of the old configuration system (still in the system to import the old data for easier update)
 - compacting storage items to use less localStorage
+
 Nerd stuff
 - more stats
 - more details in console
+
 Commands
 - default `!streamerqna` and `!sqa commands` to show all the available commands for the viewers
 - adding more placeholders for the responses:
@@ -81,6 +87,7 @@ Commands
 - alerts if command group already exists
 - alerts if aliases are duplicated
 - toggle saving responses into queue creating chat commands just for responses
+
 Other chat features
 - timed messages
 - another browser source to show chat messages on stream
@@ -95,8 +102,10 @@ Visuals
 - add animations to the bubble
 - add custom sound effects to the bubble animation
 - custom locations for the bubble elements
+
 Text
 - emote support
+
 Queue management
 - sorting submissions in the queues based on names, time or platform
 - filter submissions based on names, time or platform
